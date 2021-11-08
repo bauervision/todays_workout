@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3427314531458333289}
   - component: {fileID: 3427314531458333303}
   - component: {fileID: 5555502053376328421}
+  - component: {fileID: 7053101023850477124}
   m_Layer: 5
   m_Name: Workout
   m_TagString: Untagged
@@ -151,6 +152,19 @@ MonoBehaviour:
     - {r: 0, g: 0, b: 0, a: 0}
     - {r: 0, g: 0, b: 0, a: 0}
     m_Rotation: -90
+--- !u!114 &7053101023850477124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3427314531458333288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c888dee7c20715d40875a5ec1eecf6e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTransform: {fileID: 3427314531458333289}
 --- !u!1 &3427314531555164554
 GameObject:
   m_ObjectHideFlags: 0
