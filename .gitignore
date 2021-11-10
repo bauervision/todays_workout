@@ -1,6 +1,7 @@
 Logs
 Temp
 Packages
+Library
 .vscode
 *.csproj
 *.sln

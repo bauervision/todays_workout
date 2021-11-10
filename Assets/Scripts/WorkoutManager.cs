@@ -9,13 +9,15 @@ public class WorkoutManager : MonoBehaviour
     public GameObject AddButton;
     public GameObject Inputs;
     public GameObject workoutPrefab;
-    public GameObject rearrangeHint;
     public GameObject finishScreen;
+    //public GameObject SliderPanel;
+    //public GameObject AddTimerButton;
 
     public InputField Input;
     public Text TimerText;
     public Text StartText;
     public Text FinalTime;
+    //public Text SliderTimeText;
     private bool hasStarted = false;
 
     private WaitForSeconds waitForSeconds = new WaitForSeconds(1);
@@ -23,25 +25,64 @@ public class WorkoutManager : MonoBehaviour
     private int trainingMinutes = 0;
     private int trainingSeconds = 0;
 
+    //private bool createTimedExercise = false;
+    //private int timedExerciseTime = 0;
+
+    private void Start()
+    {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        //SliderPanel.SetActive(false);
+    }
+
     public void ShowWorkoutInput()
     {
         AddButton.SetActive(false);
     }
 
+    public void SetTimer(float timerValue)
+    {
+        // timedExerciseTime = (int)timerValue * 60;
+        // SliderTimeText.text = ProcessWorkoutTime(timedExerciseTime);
+    }
+
     public void AddNewWorkout(string workout)
     {
+
         if (workout != null)
         {
-            if (GridList.transform.childCount > 2 && !rearrangeHint.activeInHierarchy)
-                rearrangeHint.SetActive(true);
-
             GameObject newWorkout = Instantiate(workoutPrefab, GridList.transform);
-            newWorkout.transform.GetChild(0).GetComponent<Text>().text = workout;
 
-            //Input.ActivateInputField();
+            // grab the input and assign its onEndEdit method
+            InputField newInputField = newWorkout.transform.GetChild(2).GetComponent<InputField>();
+            newInputField.text = workout;
+            newInputField.onEndEdit.AddListener(delegate { HandleTextChange(newInputField); });
+
+            // now add the listener for the remove button
+            Button removeButton = newWorkout.transform.GetChild(3).GetComponent<Button>();
+            removeButton.onClick.AddListener(() => HandleRemoveWorkout(newWorkout));
+
             Input.placeholder.GetComponent<Text>().text = "Add another?";
             Input.text = string.Empty;
         }
+
+    }
+
+    public void HandleRemoveWorkout(GameObject removeObj)
+    {
+        Destroy(removeObj);
+    }
+
+    public void HandleTextChange(InputField input)
+    {
+        print("New Workout: " + input.text);
+    }
+
+    public void CreateTimedExercise()
+    {
+        //createTimedExercise = true;
+        Input.gameObject.SetActive(false);
+        //SliderPanel.SetActive(true);
+        //AddTimerButton.transform.GetChild(0).transform.gameObject.SetActive(false);
     }
 
     public void DoneWithSetup()
@@ -56,7 +97,6 @@ public class WorkoutManager : MonoBehaviour
         if (hasStarted)
         {
             StartText.text = "Stop";
-            rearrangeHint.SetActive(false);
             StartCoroutine(Timer());
         }
         else
@@ -90,4 +130,7 @@ public class WorkoutManager : MonoBehaviour
         trainingSeconds = Mathf.FloorToInt(seconds - trainingMinutes * 60);
         return string.Format("{0:00}:{1:00}", trainingMinutes, trainingSeconds);
     }
+
+
+
 }
