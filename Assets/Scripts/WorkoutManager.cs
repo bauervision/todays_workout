@@ -9,15 +9,19 @@ public class WorkoutManager : MonoBehaviour
     public GameObject AddButton;
     public GameObject Inputs;
     public GameObject workoutPrefab;
+    public GameObject workoutScreen;
     public GameObject finishScreen;
-    //public GameObject SliderPanel;
-    //public GameObject AddTimerButton;
+    public GameObject RoundsCounter;
 
     public InputField Input;
     public Text TimerText;
     public Text StartText;
     public Text FinalTime;
-    //public Text SliderTimeText;
+    public Text RoundsText;
+    public Text FinalExerciseCountText;
+    public Text FinalExerciseRoundText;
+
+
     private bool hasStarted = false;
 
     private WaitForSeconds waitForSeconds = new WaitForSeconds(1);
@@ -25,13 +29,13 @@ public class WorkoutManager : MonoBehaviour
     private int trainingMinutes = 0;
     private int trainingSeconds = 0;
 
-    //private bool createTimedExercise = false;
-    //private int timedExerciseTime = 0;
+    int totalRounds = 0;
+    public List<GameObject> exercises = new List<GameObject>();
 
     private void Start()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        //SliderPanel.SetActive(false);
+        RoundsCounter.SetActive(false);
     }
 
     public void ShowWorkoutInput()
@@ -39,10 +43,11 @@ public class WorkoutManager : MonoBehaviour
         AddButton.SetActive(false);
     }
 
-    public void SetTimer(float timerValue)
+
+    public void AddRound()
     {
-        // timedExerciseTime = (int)timerValue * 60;
-        // SliderTimeText.text = ProcessWorkoutTime(timedExerciseTime);
+        totalRounds++;
+        RoundsText.text = totalRounds.ToString();
     }
 
     public void AddNewWorkout(string workout)
@@ -51,14 +56,13 @@ public class WorkoutManager : MonoBehaviour
         if (workout != null)
         {
             GameObject newWorkout = Instantiate(workoutPrefab, GridList.transform);
-
-            // grab the input and assign its onEndEdit method
+            exercises.Add(newWorkout);
+            // grab the input
             InputField newInputField = newWorkout.transform.GetChild(2).GetComponent<InputField>();
             newInputField.text = workout;
             newInputField.onEndEdit.AddListener(delegate { HandleTextChange(newInputField); });
-
             // now add the listener for the remove button
-            Button removeButton = newWorkout.transform.GetChild(3).GetComponent<Button>();
+            Button removeButton = newWorkout.transform.GetChild(5).GetComponent<Button>();
             removeButton.onClick.AddListener(() => HandleRemoveWorkout(newWorkout));
 
             Input.placeholder.GetComponent<Text>().text = "Add another?";
@@ -66,6 +70,13 @@ public class WorkoutManager : MonoBehaviour
         }
 
     }
+
+
+
+
+
+
+
 
     public void HandleRemoveWorkout(GameObject removeObj)
     {
@@ -79,15 +90,23 @@ public class WorkoutManager : MonoBehaviour
 
     public void CreateTimedExercise()
     {
-        //createTimedExercise = true;
         Input.gameObject.SetActive(false);
-        //SliderPanel.SetActive(true);
-        //AddTimerButton.transform.GetChild(0).transform.gameObject.SetActive(false);
     }
 
     public void DoneWithSetup()
     {
         Inputs.SetActive(false);
+        RoundsCounter.SetActive(true);
+
+        foreach (GameObject item in exercises)
+        {
+            TimedExcercise thisTimeExcercise = item.GetComponent<TimedExcercise>();
+            // if an exercise has not been set as a timed one...
+            if (!thisTimeExcercise.isTimedExercise)
+                item.transform.GetChild(1).gameObject.SetActive(false);
+            else // it is a timed excercise
+                thisTimeExcercise.activeTimedExcercise = true;
+        }
     }
 
     public void StartTimer()
@@ -103,8 +122,11 @@ public class WorkoutManager : MonoBehaviour
         {
 
             StopAllCoroutines();
+            workoutScreen.SetActive(false);
             finishScreen.SetActive(true);
             FinalTime.text = ProcessWorkoutTime(workoutTime - 1);
+            FinalExerciseRoundText.text = totalRounds.ToString() + " Rounds";
+            FinalExerciseCountText.text = exercises.Count.ToString() + " Exercises";
         }
 
     }
