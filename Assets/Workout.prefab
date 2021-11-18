@@ -38,8 +38,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 431.25726, y: -1171.35}
-  m_SizeDelta: {x: 565.797, y: 2342.7}
+  m_AnchoredPosition: {x: 546.76587, y: -1171.35}
+  m_SizeDelta: {x: 707.26227, y: 2342.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6871987538760895510
 MonoBehaviour:
@@ -151,7 +151,7 @@ RectTransform:
   m_GameObject: {fileID: 437210671771687436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.58773, y: 0.58773, z: 0.58773}
   m_Children: []
   m_Father: {fileID: 3642932042027724200}
   m_RootOrder: 0
@@ -313,8 +313,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 713.04, y: -1171.4}
-  m_SizeDelta: {x: 885.71, y: 2342.7}
+  m_AnchoredPosition: {x: 729.93, y: -1171.4}
+  m_SizeDelta: {x: 1122.1, y: 2342.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &763239673136930516
 CanvasRenderer:
@@ -369,8 +369,8 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: -1
-  m_PreferredHeight: -1
+  m_PreferredWidth: 1122.1
+  m_PreferredHeight: 2342.7
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
@@ -699,17 +699,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: e0f76c3fde2e76a4fb38ffd685a686e2, type: 3}
-    m_FontSize: 97
+    m_Font: {fileID: 12800000, guid: 94ea7c2c42102b8478e8f286c8147dee, type: 3}
+    m_FontSize: 85
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 145
+    m_MinSize: 8
+    m_MaxSize: 100
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 1
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
 --- !u!1 &2240055247811398898
@@ -749,8 +749,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 799.9329, y: -1171.35}
-  m_SizeDelta: {x: 171.55432, y: 2342.7}
+  m_AnchoredPosition: {x: 1011.2485, y: -1171.35}
+  m_SizeDelta: {x: 221.70299, y: 2342.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &199460180875159692
 CanvasRenderer:
@@ -903,8 +903,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 74.17938, y: -1171.35}
-  m_SizeDelta: {x: 148.35876, y: 2342.7}
+  m_AnchoredPosition: {x: 96.56737, y: -1171.35}
+  m_SizeDelta: {x: 193.13474, y: 2342.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3177868307243317023
 CanvasRenderer:
@@ -1513,7 +1513,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -1171.3593}
-  m_SizeDelta: {x: 152.68507, y: 2342.7185}
+  m_SizeDelta: {x: 209.49712, y: 2342.7185}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &2497988144676690706
 CanvasRenderer:
@@ -1851,7 +1851,7 @@ RectTransform:
   m_GameObject: {fileID: 4694559714688250421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.55974257, y: 0.55974257, z: 0.55974257}
+  m_LocalScale: {x: 0.8017753, y: 0.8017753, z: 0.8017753}
   m_Children: []
   m_Father: {fileID: 2486766028121631823}
   m_RootOrder: 0
@@ -2001,19 +2001,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: e0f76c3fde2e76a4fb38ffd685a686e2, type: 3}
-    m_FontSize: 97
+    m_Font: {fileID: 12800000, guid: 94ea7c2c42102b8478e8f286c8147dee, type: 3}
+    m_FontSize: 85
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 145
+    m_MinSize: 8
+    m_MaxSize: 100
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: This is a workout
+  m_Text: workout
 --- !u!1 &5997353733355180331
 GameObject:
   m_ObjectHideFlags: 0
@@ -2127,8 +2127,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 713.04, y: -1171.3593}
-  m_SizeDelta: {x: 885.71, y: 2342.7185}
+  m_AnchoredPosition: {x: 729.93, y: -1171.3593}
+  m_SizeDelta: {x: 1122.1, y: 2342.7185}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6338349699315556734
 CanvasRenderer:
@@ -2183,7 +2183,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 885.71
+  m_PreferredWidth: 1122.1
   m_PreferredHeight: 2342.7185
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -2252,8 +2252,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 885.71, y: -1171.3593}
-  m_SizeDelta: {x: 733.02496, y: 2342.7185}
+  m_AnchoredPosition: {x: 1122.1, y: -1171.3593}
+  m_SizeDelta: {x: 912.6029, y: 2342.7185}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1473712260901318209
 MonoBehaviour:
@@ -2569,7 +2569,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 270.1876
+  m_PreferredWidth: 168.88
   m_PreferredHeight: 2342.7185
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -2874,7 +2874,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 284.1088
+  m_PreferredWidth: 139.2248
   m_PreferredHeight: 2342.7185
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -3038,7 +3038,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 605.09
+  m_PreferredWidth: 964.28
   m_PreferredHeight: 2342.7185
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -3342,7 +3342,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 280.617
+  m_PreferredWidth: 167.6111
   m_PreferredHeight: 2342.7185
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1

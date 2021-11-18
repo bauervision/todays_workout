@@ -16,13 +16,18 @@ ScriptsOnlyBuild:
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.Dropdown
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
     - UnityEngine.UI.InputField
     - UnityEngine.UI.LayoutElement
+    - UnityEngine.UI.Mask
+    - UnityEngine.UI.ScrollRect
+    - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
     Assets/Scenes/Workout Plan.unity:
@@ -47,11 +52,15 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
+      Script: {instanceID: 1464}
+    - Class: 114
       Script: {instanceID: 1504}
     - Class: 114
       Script: {instanceID: 1552}
     - Class: 114
       Script: {instanceID: 1638}
+    - Class: 114
+      Script: {instanceID: 1648}
     - Class: 114
       Script: {instanceID: 1670}
     - Class: 114
@@ -75,9 +84,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2072}
     - Class: 114
+      Script: {instanceID: 2150}
+    - Class: 114
       Script: {instanceID: 2220}
     - Class: 114
+      Script: {instanceID: 2266}
+    - Class: 114
       Script: {instanceID: 2300}
+    - Class: 114
+      Script: {instanceID: 2380}
     - Class: 114
       Script: {instanceID: 2402}
     - Class: 115
@@ -219,7 +234,7 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
-      Hash: b6cf7f4011adc1240f763718514fdd31
+      Hash: e56277ad991a395ab6d014d202d589ab
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WorkoutManager
