@@ -234,7 +234,7 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
-      Hash: e56277ad991a395ab6d014d202d589ab
+      Hash: acf927633f8d3878f82e21309b1e12cc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WorkoutManager

@@ -35,6 +35,7 @@ public class WorkoutManager : MonoBehaviour
     public Text RoundsText;
     public Text FinalExerciseCountText;
     public Text FinalExerciseRoundText;
+    public Text ActiveWorkoutText;
 
     #region Private Variables
     private bool hasStarted = false;
@@ -86,6 +87,9 @@ public class WorkoutManager : MonoBehaviour
     {
         StartScreen.SetActive(false);
         MainScreen.SetActive(true);
+        ActiveWorkoutText.text = "Custom";
+        ClearExerciseList();
+        RoundsCounter.SetActive(false);
     }
 
     public void GoBackToStart()
@@ -99,6 +103,10 @@ public class WorkoutManager : MonoBehaviour
         hasStarted = false;
         TimerText.text = ProcessWorkoutTime(workoutTime);
         Inputs.SetActive(true);
+        RoundsCounter.SetActive(false);
+        totalRounds = 0;
+        if (Randomizer.activeInHierarchy)
+            Randomizer.SetActive(false);
     }
 
     public void RandomWorkout()
@@ -109,7 +117,7 @@ public class WorkoutManager : MonoBehaviour
 
         RandomizeWorkout();
         Randomizer.SetActive(true);
-
+        ActiveWorkoutText.text = "Random";
     }
 
 
@@ -119,6 +127,8 @@ public class WorkoutManager : MonoBehaviour
 
         for (int i = 0; i < 7; i++)
             AddNewWorkout(GetRandomWorkout(i));
+
+
     }
 
     string GetRandomWorkout(int workoutIndex)
@@ -149,6 +159,7 @@ public class WorkoutManager : MonoBehaviour
     public void LoadSelectedTemplate()
     {
         ClearExerciseList();
+        Randomizer.SetActive(false);
 
         if (SelectedTemplate != 0)
         {
@@ -156,6 +167,7 @@ public class WorkoutManager : MonoBehaviour
             StartScreen.SetActive(false);
             MainScreen.SetActive(true);
             ShowWorkoutInput();
+            ActiveWorkoutText.text = GetActiveWorkoutName();
             ActiveWorkoutTemplate = GetActiveWorkout();
             // run thru and add all the workouts for this template
             if (ActiveWorkoutTemplate != null)
@@ -163,6 +175,8 @@ public class WorkoutManager : MonoBehaviour
                     AddNewWorkout(workout);
 
         }
+
+
     }
 
     void ClearExerciseList()
@@ -184,6 +198,22 @@ public class WorkoutManager : MonoBehaviour
             case 6: return LegWorkouts;
             case 7: return MixedWorkouts;
             case 8: return ShoulderWorkouts;
+            default: return null;
+        }
+    }
+
+    private string GetActiveWorkoutName()
+    {
+        switch (SelectedTemplate)
+        {
+            case 1: return "Abs";
+            case 2: return "Arms";
+            case 3: return "Back";
+            case 4: return "Cardio";
+            case 5: return "Chest";
+            case 6: return "Legs";
+            case 7: return "Mixed";
+            case 8: return "Shoulders";
             default: return null;
         }
     }
