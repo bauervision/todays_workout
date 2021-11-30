@@ -10,14 +10,11 @@ public class WorkoutManager : MonoBehaviour
     public List<GameObject> exercises = new List<GameObject>();
 
     [Header("Game Objects")]
-    public GameObject StartScreen;
-    public GameObject MainScreen;
+
     public GameObject GridList;
     public GameObject AddButton;
     public GameObject Inputs;
     public GameObject workoutPrefab;
-    public GameObject workoutScreen;
-    public GameObject finishScreen;
     public GameObject RoundsCounter;
     public GameObject Randomizer;
 
@@ -47,23 +44,6 @@ public class WorkoutManager : MonoBehaviour
     int SelectedTemplate = 0;
 
     string[] ActiveWorkoutTemplate = new string[] { };
-    string[] AbWorkouts = new string[] { "ab bicyles", "heel taps", "plank", "jack knife", "flutter kicks", "hollow body hold", "toe touches", "mountain climbers" };
-    string[] ArmWorkouts = new string[] { "hammer curls", "ab bicycle", "curls", "tricep ext", "alt curls", "knee to elbow plank", "concentration curls", "curl burnout" };
-    string[] BackWorkouts = new string[] { "supermans", "plank", "bird dog", "side plank", "glute bridge", "reverse fly", "dumbell row", "deadlift" };
-    string[] CardioWorkouts = new string[] { "mountain climbers", "jump squat", "heel taps", "side 2 side", "high knees", "butt kickers", "burpees" };
-    string[] ChestWorkouts = new string[] { "push ups", "tricep dips", "heel taps", "chest flies", "incline pushups", "plank", "chest abductions", "decline pushups" };
-    string[] LegWorkouts = new string[] { "squats", "lunge pulse", "ab bicycle", "burpees", "single leg bridge", "dead bug", "leg circles", "weighted lunges" };
-    string[] MixedWorkouts = new string[] { "burpees", "lunges", "heel taps", "pushups", "curls", "delt row", "tricep ext", "shoulder ext" };
-    string[] ShoulderWorkouts = new string[] { "UpFrontBack", "heel taps", "reverse flies", "mountain climber", "delt row", "side extensions", "row" };
-
-    // core exercises
-    string[] abs = new string[] { "ab bicyles", "heel taps", "plank", "jack knife", "flutter kicks", "hollow body hold", "toe touches", "reach over crunch" };
-    string[] arms = new string[] { "hammer curls", "curls", "tricep ext", "alt curls", "concentration curls", "curl burnout" };
-    string[] back = new string[] { "supermans", "bird dog", "side plank", "glute bridge", "dumbell row", "deadlift", "row" };
-    string[] cardio = new string[] { "mountain climbers", "jump squat", "side 2 side", "high knees", "butt kickers", "burpees" };
-    string[] chest = new string[] { "push ups", "chest flies", "incline pushups", "chest abductions", "decline pushups", "front pull downs" };
-    string[] legs = new string[] { "squats", "lunge pulse", "single leg bridge", "dead bug", "leg circles", "weighted lunges", "jump squat", "squat pulses" };
-    string[] shoulders = new string[] { "UpFrontBack", "reverse flies", "delt row", "side extensions", "row", "side plank" };
 
 
     List<string> selectedWorkoutTemplate = new List<string>();
@@ -78,15 +58,13 @@ public class WorkoutManager : MonoBehaviour
         DD_options = TemplateDropdown.options;
         LaunchTemplateBtn.interactable = false;
         LaunchTemplateBtn.transform.GetChild(0).transform.GetComponent<Text>().color = Color.grey;
-        MainScreen.SetActive(false);
-        StartScreen.SetActive(true);
+
         Randomizer.SetActive(false);
     }
 
     public void StartFresh()
     {
-        StartScreen.SetActive(false);
-        MainScreen.SetActive(true);
+        UIManager.instance.StartFresh();
         ActiveWorkoutText.text = "Custom";
         ClearExerciseList();
         RoundsCounter.SetActive(false);
@@ -94,10 +72,7 @@ public class WorkoutManager : MonoBehaviour
 
     public void GoBackToStart()
     {
-        StartScreen.SetActive(true);
-        MainScreen.SetActive(false);
-        finishScreen.SetActive(false);
-        workoutScreen.SetActive(true);
+        UIManager.instance.BackToStart();
         workoutTime = 0;
         StartText.text = "Start";
         hasStarted = false;
@@ -109,12 +84,23 @@ public class WorkoutManager : MonoBehaviour
             Randomizer.SetActive(false);
     }
 
+    public void GoToEditScreen()
+    {
+        UIManager.instance.GoToEditScreen();
+        workoutTime = 0;
+        StartText.text = "Start";
+        hasStarted = false;
+        TimerText.text = ProcessWorkoutTime(workoutTime);
+        Inputs.SetActive(true);
+        RoundsCounter.SetActive(false);
+        totalRounds = 0;
+        if (Randomizer.activeInHierarchy)
+            Randomizer.SetActive(false);
+    }
     public void RandomWorkout()
     {
-        StartScreen.SetActive(false);
-        MainScreen.SetActive(true);
+        UIManager.instance.RandomWorkoutScreens();
         ShowWorkoutInput();
-
         RandomizeWorkout();
         Randomizer.SetActive(true);
         ActiveWorkoutText.text = "Random";
@@ -135,13 +121,13 @@ public class WorkoutManager : MonoBehaviour
     {
         switch (workoutIndex)
         {
-            case 1: return arms[Random.Range(0, arms.Length)];
-            case 2: return back[Random.Range(0, back.Length)];
-            case 3: return cardio[Random.Range(0, cardio.Length)];
-            case 4: return chest[Random.Range(0, chest.Length)];
-            case 5: return legs[Random.Range(0, legs.Length)];
-            case 6: return shoulders[Random.Range(0, shoulders.Length)];
-            default: return abs[Random.Range(0, abs.Length)];
+            case 1: return DataManager.instance.arms[Random.Range(0, DataManager.instance.arms.Length)];
+            case 2: return DataManager.instance.back[Random.Range(0, DataManager.instance.back.Length)];
+            case 3: return DataManager.instance.cardio[Random.Range(0, DataManager.instance.cardio.Length)];
+            case 4: return DataManager.instance.chest[Random.Range(0, DataManager.instance.chest.Length)];
+            case 5: return DataManager.instance.legs[Random.Range(0, DataManager.instance.legs.Length)];
+            case 6: return DataManager.instance.shoulders[Random.Range(0, DataManager.instance.shoulders.Length)];
+            default: return DataManager.instance.abs[Random.Range(0, DataManager.instance.abs.Length)];
         }
 
     }
@@ -152,6 +138,7 @@ public class WorkoutManager : MonoBehaviour
         if (index != 0)
         {
             LaunchTemplateBtn.interactable = true;
+            LaunchTemplateBtn.transform.GetChild(0).transform.GetComponent<Text>().color = Color.cyan;
             LaunchTemplateBtn.transform.GetChild(0).transform.GetComponent<Text>().text = "Launch " + DD_options[index].text + " Template";
         }
     }
@@ -164,11 +151,10 @@ public class WorkoutManager : MonoBehaviour
         if (SelectedTemplate != 0)
         {
             // handle UI switch
-            StartScreen.SetActive(false);
-            MainScreen.SetActive(true);
+            UIManager.instance.ShowMainScreen();
             ShowWorkoutInput();
-            ActiveWorkoutText.text = GetActiveWorkoutName();
-            ActiveWorkoutTemplate = GetActiveWorkout();
+            ActiveWorkoutText.text = Utils.GetActiveWorkoutName(SelectedTemplate);
+            ActiveWorkoutTemplate = Utils.GetActiveWorkout(SelectedTemplate);
             // run thru and add all the workouts for this template
             if (ActiveWorkoutTemplate != null)
                 foreach (string workout in ActiveWorkoutTemplate)
@@ -186,37 +172,7 @@ public class WorkoutManager : MonoBehaviour
                 HandleRemoveWorkout(GridList.transform.GetChild(i).gameObject);
     }
 
-    private string[] GetActiveWorkout()
-    {
-        switch (SelectedTemplate)
-        {
-            case 1: return AbWorkouts;
-            case 2: return ArmWorkouts;
-            case 3: return BackWorkouts;
-            case 4: return CardioWorkouts;
-            case 5: return ChestWorkouts;
-            case 6: return LegWorkouts;
-            case 7: return MixedWorkouts;
-            case 8: return ShoulderWorkouts;
-            default: return null;
-        }
-    }
 
-    private string GetActiveWorkoutName()
-    {
-        switch (SelectedTemplate)
-        {
-            case 1: return "Abs";
-            case 2: return "Arms";
-            case 3: return "Back";
-            case 4: return "Cardio";
-            case 5: return "Chest";
-            case 6: return "Legs";
-            case 7: return "Mixed";
-            case 8: return "Shoulders";
-            default: return null;
-        }
-    }
 
     public void ShowWorkoutInput()
     {
@@ -239,7 +195,7 @@ public class WorkoutManager : MonoBehaviour
             exercises.Add(newWorkout);
             // grab the input
             InputField newInputField = newWorkout.transform.GetChild(2).GetComponent<InputField>();
-            newInputField.text = HandleCapitalCase(workout);
+            newInputField.text = Utils.HandleCapitalCase(workout);
             newInputField.onEndEdit.AddListener(delegate { HandleTextChange(newInputField); });
             // now add the listener for the remove button
             Button removeButton = newWorkout.transform.GetChild(5).GetComponent<Button>();
@@ -251,27 +207,10 @@ public class WorkoutManager : MonoBehaviour
 
     }
 
-    string HandleCapitalCase(string incomingString)
-    {
-        // spit string into an array
-        List<string> splitArray = incomingString.Split(char.Parse(" ")).ToList();
-        List<string> capitalCaseString = new List<string>();
-        foreach (string word in splitArray)
-        {
-            capitalCaseString.Add(UppercaseFirst(word));
-        }
-        return string.Join(" ", capitalCaseString.ToArray());
-    }
 
 
-    string UppercaseFirst(string s)
-    {
-        if (string.IsNullOrEmpty(s))
-        {
-            return string.Empty;
-        }
-        return char.ToUpper(s[0]) + s.Substring(1);
-    }
+
+
 
 
 
@@ -324,8 +263,7 @@ public class WorkoutManager : MonoBehaviour
         {
 
             StopAllCoroutines();
-            workoutScreen.SetActive(false);
-            finishScreen.SetActive(true);
+            UIManager.instance.WorkoutComplete();
             FinalTime.text = ProcessWorkoutTime(workoutTime - 1);
             FinalExerciseRoundText.text = totalRounds.ToString() + " Rounds";
             FinalExerciseCountText.text = exercises.Count.ToString() + " Exercises";
