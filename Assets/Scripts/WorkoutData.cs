@@ -17,6 +17,12 @@ public class Exercise
         name = exerciseName;
         list = exerciseList;
     }
+
+    public Exercise(string exerciseName)
+    {
+        name = exerciseName;
+        list = new string[] { "First Exercise" };
+    }
 }
 
 
@@ -37,6 +43,12 @@ public class WorkoutTemplate
     {
         name = exerciseName;
         list = exerciseList;
+    }
+
+    public WorkoutTemplate(string exerciseName)
+    {
+        name = exerciseName;
+        list = new string[] { "First Workout" };
     }
 }
 

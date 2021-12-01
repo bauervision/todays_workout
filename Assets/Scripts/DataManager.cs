@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
     public static DataManager instance;
+
 
     public List<WorkoutTemplate> myWorkouts;
     public List<Exercise> myExercises;
@@ -13,11 +15,32 @@ public class DataManager : MonoBehaviour
     {
         instance = this;
         // on start, check to see if we have saved data we need to load
+        if (SaveWorkout.CheckFirstTimeData())
+        {
+            print("Save file detected! Loading Data...");
 
-        // we don't have any saved data so start with default data
-        LoadDefaultData();
-
+        }
+        else
+        {
+            print("No file detected, Loading Default Data...");
+            LoadDefaultData();
+        }
     }
+
+    ///<summary>Called from the UI: save button </smmary>
+    public void SaveData()
+    {
+        print("Saving file...");
+        SaveWorkout.SaveFile();
+    }
+
+    private void LoadSavedData()
+    {
+        WorkoutSaveData loadedData = SaveWorkout.LoadFile();
+        DataManager.instance.myWorkouts = loadedData.myWorkouts.ToList();
+        DataManager.instance.myExercises = loadedData.myExercises.ToList();
+    }
+
 
     private void LoadDefaultData()
     {
@@ -38,7 +61,8 @@ public class DataManager : MonoBehaviour
         myExercises.Add(new Exercise("Chest", chest));
         myExercises.Add(new Exercise("Legs", legs));
         myExercises.Add(new Exercise("Shoulders", shoulders));
-
+        // now handle the dropdowns
+        UIManager.instance.UpdateWorkoutDropDown();
     }
 
     #region Workout Starter Templates
@@ -54,15 +78,31 @@ public class DataManager : MonoBehaviour
     #endregion
 
     #region Starting core exercises
+    [HideInInspector]
     public string[] abs = new string[] { "ab bicyles", "heel taps", "plank", "jack knife", "flutter kicks", "hollow body hold", "toe touches", "reach over crunch" };
+    [HideInInspector]
     public string[] arms = new string[] { "hammer curls", "curls", "tricep ext", "alt curls", "concentration curls", "curl burnout" };
+    [HideInInspector]
     public string[] back = new string[] { "supermans", "bird dog", "side plank", "glute bridge", "dumbell row", "deadlift", "row" };
+    [HideInInspector]
     public string[] cardio = new string[] { "mountain climbers", "jump squat", "side 2 side", "high knees", "butt kickers", "burpees" };
+    [HideInInspector]
     public string[] chest = new string[] { "push ups", "chest flies", "incline pushups", "chest abductions", "decline pushups", "front pull downs" };
+    [HideInInspector]
     public string[] legs = new string[] { "squats", "lunge pulse", "single leg bridge", "dead bug", "leg circles", "weighted lunges", "jump squat", "squat pulses" };
+    [HideInInspector]
     public string[] shoulders = new string[] { "UpFrontBack", "reverse flies", "delt row", "side extensions", "row", "side plank" };
     #endregion
 
 
+    public void AddNewWorkoutTemplate(string workoutName)
+    {
+        myWorkouts.Add(new WorkoutTemplate(workoutName));
+    }
+
+    public void AddNewExercise(string exerciseName)
+    {
+        myWorkouts.Add(new WorkoutTemplate(exerciseName));
+    }
 
 }

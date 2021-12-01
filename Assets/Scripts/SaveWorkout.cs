@@ -1,20 +1,26 @@
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Linq;
 
 public class SaveWorkout : MonoBehaviour
 {
 
-    void Start()
-    {
-        SaveFile();
-        LoadFile();
-    }
+    // void Start()
+    // {
+    //     SaveFile();
+    //     LoadFile();
+    // }
 
-    public void SaveFile()
+    public static bool CheckFirstTimeData()
     {
         string destination = Application.persistentDataPath + "/save.dat";
+        return File.Exists(destination);
+    }
+
+    public static void SaveFile()
+    {
+        string destination = Application.persistentDataPath + "/save.dat";
+        print("Saving file to: " + Application.persistentDataPath);
         FileStream file;
 
         if (File.Exists(destination)) file = File.OpenWrite(destination);
@@ -26,7 +32,7 @@ public class SaveWorkout : MonoBehaviour
         file.Close();
     }
 
-    public void LoadFile()
+    public static WorkoutSaveData LoadFile()
     {
         string destination = Application.persistentDataPath + "/save.dat";
         FileStream file;
@@ -35,16 +41,13 @@ public class SaveWorkout : MonoBehaviour
         else
         {
             Debug.LogError("File not found");
-            return;
+            return null;
         }
 
         BinaryFormatter bf = new BinaryFormatter();
         WorkoutSaveData data = (WorkoutSaveData)bf.Deserialize(file);
         file.Close();
-
-        DataManager.instance.myWorkouts = data.myWorkouts.ToList();
-        DataManager.instance.myExercises = data.myExercises.ToList();
-
+        return data;
     }
 
 

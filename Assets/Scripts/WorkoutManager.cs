@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class WorkoutManager : MonoBehaviour
 {
+    public static WorkoutManager instance;
     [Header("Lists")]
     public List<GameObject> exercises = new List<GameObject>();
 
@@ -20,10 +21,10 @@ public class WorkoutManager : MonoBehaviour
 
 
     [Header("Inputs")]
-    public Button LaunchTemplateBtn;
+
     public InputField Input;
     public Dropdown TemplateDropdown;
-    List<Dropdown.OptionData> DD_options;
+
 
     [Header("Text Objects")]
     public Text TimerText;
@@ -41,7 +42,7 @@ public class WorkoutManager : MonoBehaviour
     private int trainingMinutes = 0;
     private int trainingSeconds = 0;
     int totalRounds = 0;
-    int SelectedTemplate = 0;
+    public int SelectedTemplate = 0;
 
     string[] ActiveWorkoutTemplate = new string[] { };
 
@@ -53,12 +54,9 @@ public class WorkoutManager : MonoBehaviour
 
     private void Start()
     {
+        instance = this;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         RoundsCounter.SetActive(false);
-        DD_options = TemplateDropdown.options;
-        LaunchTemplateBtn.interactable = false;
-        LaunchTemplateBtn.transform.GetChild(0).transform.GetComponent<Text>().color = Color.grey;
-
         Randomizer.SetActive(false);
     }
 
@@ -132,37 +130,22 @@ public class WorkoutManager : MonoBehaviour
 
     }
 
-    public void SetTemplateIndex(int index)
-    {
-        SelectedTemplate = index;
-        if (index != 0)
-        {
-            LaunchTemplateBtn.interactable = true;
-            LaunchTemplateBtn.transform.GetChild(0).transform.GetComponent<Text>().color = Color.cyan;
-            LaunchTemplateBtn.transform.GetChild(0).transform.GetComponent<Text>().text = "Launch " + DD_options[index].text + " Template";
-        }
-    }
+
 
     public void LoadSelectedTemplate()
     {
         ClearExerciseList();
         Randomizer.SetActive(false);
 
-        if (SelectedTemplate != 0)
-        {
-            // handle UI switch
-            UIManager.instance.ShowMainScreen();
-            ShowWorkoutInput();
-            ActiveWorkoutText.text = Utils.GetActiveWorkoutName(SelectedTemplate);
-            ActiveWorkoutTemplate = Utils.GetActiveWorkout(SelectedTemplate);
-            // run thru and add all the workouts for this template
-            if (ActiveWorkoutTemplate != null)
-                foreach (string workout in ActiveWorkoutTemplate)
-                    AddNewWorkout(workout);
-
-        }
-
-
+        // handle UI switch
+        UIManager.instance.ShowMainScreen();
+        ShowWorkoutInput();
+        ActiveWorkoutText.text = Utils.GetActiveWorkoutName(SelectedTemplate);
+        ActiveWorkoutTemplate = Utils.GetActiveWorkout(SelectedTemplate);
+        // run thru and add all the workouts for this template
+        if (ActiveWorkoutTemplate != null)
+            foreach (string workout in ActiveWorkoutTemplate)
+                AddNewWorkout(workout);
     }
 
     void ClearExerciseList()
@@ -206,14 +189,6 @@ public class WorkoutManager : MonoBehaviour
         }
 
     }
-
-
-
-
-
-
-
-
 
 
 
