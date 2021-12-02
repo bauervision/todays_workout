@@ -26,7 +26,7 @@ public class SaveWorkout : MonoBehaviour
         if (File.Exists(destination)) file = File.OpenWrite(destination);
         else file = File.Create(destination);
 
-        WorkoutSaveData data = new WorkoutSaveData(DataManager.instance.myWorkouts.ToArray(), DataManager.instance.myExercises.ToArray());
+        WorkoutSaveData data = new WorkoutSaveData(DataManager.instance.myWorkouts.ToArray(), DataManager.instance.myMuscleGroups.ToArray());
         BinaryFormatter bf = new BinaryFormatter();
         bf.Serialize(file, data);
         file.Close();

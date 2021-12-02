@@ -348,7 +348,7 @@ ScriptsOnlyBuild:
     className: Dropdown
   - hash:
       serializedVersion: 2
-      Hash: 0ab3e02c5dfee57cb6b4f8c4601eb9b3
+      Hash: b4dee042ad98743ef557a479d48cd174
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DataManager

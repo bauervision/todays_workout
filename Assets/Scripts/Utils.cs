@@ -35,13 +35,13 @@ public class Utils : MonoBehaviour
         return DataManager.instance.myWorkouts.ToArray().ElementAt(selectedItem).name;
     }
 
-    public static string[] GetActiveExercises(int selectedItem)
+    public static string[] GetActiveMuscleGroupExercises(int selectedItem)
     {
-        return DataManager.instance.myExercises.ToArray().ElementAt(selectedItem).list;
+        return DataManager.instance.myMuscleGroups.ToArray().ElementAt(selectedItem).list;
     }
 
-    public static string GetActiveExerciseName(int selectedItem)
+    public static string GetActiveMuscleGroupName(int selectedItem)
     {
-        return DataManager.instance.myExercises.ToArray().ElementAt(selectedItem).name;
+        return DataManager.instance.myMuscleGroups.ToArray().ElementAt(selectedItem).name;
     }
 }

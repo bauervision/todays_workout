@@ -12,7 +12,7 @@ public class DataManager : MonoBehaviour
 
 
     public List<WorkoutTemplate> myWorkouts;
-    public List<Exercise> myExercises;
+    public List<MuscleGroup> myMuscleGroups;
 
     private void Start()
     {
@@ -44,7 +44,7 @@ public class DataManager : MonoBehaviour
     {
         WorkoutSaveData loadedData = SaveWorkout.LoadFile();
         DataManager.instance.myWorkouts = loadedData.myWorkouts.ToList();
-        DataManager.instance.myExercises = loadedData.myExercises.ToList();
+        DataManager.instance.myMuscleGroups = loadedData.myMuscleGroups.ToList();
         UIManager.instance.UpdateWorkoutDropDown();
     }
 
@@ -61,19 +61,19 @@ public class DataManager : MonoBehaviour
         myWorkouts.Add(new WorkoutTemplate("Mixed", _Mixed));
         myWorkouts.Add(new WorkoutTemplate("Shoulders", _Shoulders));
         // and load all starting exercises
-        myExercises.Add(new Exercise("Abs", abs));
-        myExercises.Add(new Exercise("Arms", arms));
-        myExercises.Add(new Exercise("Back", back));
-        myExercises.Add(new Exercise("Cardio", cardio));
-        myExercises.Add(new Exercise("Chest", chest));
-        myExercises.Add(new Exercise("Legs", legs));
-        myExercises.Add(new Exercise("Shoulders", shoulders));
+        myMuscleGroups.Add(new MuscleGroup("Abs", abs));
+        myMuscleGroups.Add(new MuscleGroup("Arms", arms));
+        myMuscleGroups.Add(new MuscleGroup("Back", back));
+        myMuscleGroups.Add(new MuscleGroup("Cardio", cardio));
+        myMuscleGroups.Add(new MuscleGroup("Chest", chest));
+        myMuscleGroups.Add(new MuscleGroup("Legs", legs));
+        myMuscleGroups.Add(new MuscleGroup("Shoulders", shoulders));
         // now handle the dropdowns
         UIManager.instance.UpdateWorkoutDropDown();
     }
 
     #region Workout Starter Templates
-    string[] _Abs = new string[] { "ab bicyles", "heel taps", "plank", "jack knife", "flutter kicks", "hollow body hold", "toe touches", "mountain climbers" };
+    string[] _Abs = new string[] { "Ab Bicyles", "Heel Taps", "plank", "jack knife", "flutter kicks", "hollow body hold", "toe touches", "mountain climbers" };
     string[] _Arms = new string[] { "hammer curls", "ab bicycle", "curls", "tricep ext", "alt curls", "knee to elbow plank", "concentration curls", "curl burnout" };
     string[] _Back = new string[] { "supermans", "plank", "bird dog", "side plank", "glute bridge", "reverse fly", "dumbell row", "deadlift" };
     string[] _Cardio = new string[] { "mountain climbers", "jump squat", "heel taps", "side 2 side", "high knees", "butt kickers", "burpees" };
@@ -102,30 +102,16 @@ public class DataManager : MonoBehaviour
     #endregion
 
 
-    public void AddNewWorkoutTemplate(string workoutName)
-    {
-        myWorkouts.Add(new WorkoutTemplate(workoutName));
-    }
+    #region Add Data
+    public void AddNewWorkoutTemplate(string workoutName) { myWorkouts.Add(new WorkoutTemplate(workoutName)); }
 
-    public void AddNewExercise(string exerciseName)
-    {
-        myWorkouts.Add(new WorkoutTemplate(exerciseName));
-    }
+    public void AddNewExerciseForSpecificWorkout(string workoutName, string newExercise) { DataManager.instance.myWorkouts.Find((workout) => workout.name == workoutName).list.ToList().Add(newExercise); }
 
-    public void AddNewExerciseForSpecificWorkout(string workoutName, string newExercise)
-    {
-        print("Updating: " + workoutName + " with new exercise name: " + newExercise);
-        // find current workout data template
-        DataManager.instance.myWorkouts.Find((workout) => workout.name == workoutName).list.ToList().Add(newExercise);
-        // grab the list of exercises for this workout
-        //string[] listToUpdate = currentWorkout.list;
+    public void AddNewExerciseForSpecificMuscleGroup(int groupIndex, string newExercise) { DataManager.instance.myMuscleGroups[groupIndex].list.ToList().Add(newExercise); }
 
-        //string[] updatedList = DataManager.instance.myWorkouts.Find((workout) => workout.name == currentTemplate).list;
-        //print("Added new Exercise..." + updatedList.ToString());
-        //updatedList.ToList().Add(exerciseName);
-        // now update the workout data
-        //DataManager.instance.myWorkouts.Find((workout) => workout.name == currentTemplate).list = updatedList;
-    }
+    #endregion
+
+    #region Update Data
 
     ///<summary>When the user has made a text change for a specific exercise within a workout, update the data. If the updated name isn't found, it will add it to the data </summary>
     public void UpdateExerciseDataForSpecificWorkout(string workoutName, string oldExerciseName, string newExerciseName, InputField textToUpdate)
@@ -162,18 +148,36 @@ public class DataManager : MonoBehaviour
 
     }
 
-    public void AddExerciseDataToMuscleGroup(string muscleGroupName, string newExercise)
+    public void UpdateExerciseDataToMuscleGroup(string oldExerciseName, string newExerciseName, InputField textToUpdate, int groupIndex)
     {
-        print("Adding New Exercise: " + newExercise + " to muscle group " + muscleGroupName);
-
-        // add new data to the list of this workout
-        //string[] updatedList = DataManager.instance.myWorkouts.Find((workout) => workout.name == currentTemplate).list;
-        //print("Added new Exercise..." + updatedList.ToString());
-        //updatedList.ToList().Add(exerciseName);
-        // now update the workout data
-        //DataManager.instance.myWorkouts.Find((workout) => workout.name == currentTemplate).list = updatedList;
+        // make sure we have a valid group id
+        if (groupIndex != -1)
+        {
+            int exerciseIndexToUpdate = DataManager.instance.myMuscleGroups[groupIndex].list.ToList().FindIndex(exercise => exercise == oldExerciseName);
+            // make sure we found it
+            if (exerciseIndexToUpdate != -1)
+            {
+                DataManager.instance.myMuscleGroups[groupIndex].list[exerciseIndexToUpdate] = newExerciseName;
+                UIManager.instance.HandleColorChangeFromUpdate(textToUpdate.transform.GetChild(2).transform.GetComponent<Text>(), true);
+            }
+            else
+            {
+                // couldnt find this exercise in the current data, so we add it
+                string[] updateList = DataManager.instance.myMuscleGroups[groupIndex].list;
+                List<string> newList = updateList.ToList();
+                newList.Add(newExerciseName);
+                DataManager.instance.myMuscleGroups[groupIndex].list = newList.ToArray();
+                UIManager.instance.HandleColorChangeFromUpdate(textToUpdate.transform.GetChild(2).transform.GetComponent<Text>(), true);
+            }
+            // be sure we see the coor change update verifying the change was successful
+            UIManager.instance.UpdateWorkoutDropDown();
+        }
+        else
+        {
+            Debug.LogError("UpdateExerciseDataToMuscleGroup | Couldnt find muscle group in the data");
+            UIManager.instance.HandleColorChangeFromUpdate(textToUpdate.transform.GetChild(2).transform.GetComponent<Text>(), false);
+        }
     }
-
 
     ///<summary>Called from UIManager when the user has changed the name of a workout template, includes color changing confirmation </summary>
     public void UpdateWorkoutName(string oldWorkoutName, string newWorkoutName, InputField textToUpdate)
@@ -194,6 +198,10 @@ public class DataManager : MonoBehaviour
 
     }
 
+    #endregion
+
+
+    #region Remove Data
 
     ///<summary>Called from UIManager when the user has decided to remove an entire workout routine </summary>
     public void RemoveWorkout(string workoutName)
@@ -229,4 +237,29 @@ public class DataManager : MonoBehaviour
         else
             Debug.LogError("Didnt find workout: " + workoutName);
     }
+
+
+    ///<summary>Called from UIManager when the user has decided to remove a specific exercise from a muscle group </summary>
+    public void RemoveMuscleGroupExercise(int groupIndex, string exerciseName)
+    {
+        // make sure we found it
+        if (groupIndex != -1)
+        {
+            int exerciseIndexToUpdate = DataManager.instance.myMuscleGroups[groupIndex].list.ToList().FindIndex(exercise => exercise == exerciseName);
+            // make sure we found it
+            if (exerciseIndexToUpdate != -1)
+            {
+                string[] updateList = DataManager.instance.myMuscleGroups[groupIndex].list;
+                List<string> newList = updateList.ToList();
+                newList.RemoveAt(exerciseIndexToUpdate);
+                DataManager.instance.myMuscleGroups[groupIndex].list = newList.ToArray();
+            }
+            else
+                Debug.LogError("Didnt find exercise: " + exerciseName + " in data");
+        }
+    }
+
+    #endregion
+
+
 }

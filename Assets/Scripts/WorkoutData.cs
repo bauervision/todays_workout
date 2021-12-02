@@ -1,26 +1,34 @@
 
+using System.Collections.Generic;
+
 [System.Serializable]
-///<summary>These are all of the exercises for one targeted muscle group </summary>
-public class Exercise
+///<summary>This data holds the name of a muscle group, and all of the exercises associated with it</summary>
+public class MuscleGroup
 {
     public string name;
     public string[] list;
 
-    public Exercise()
+    public MuscleGroup()
     {
         name = string.Empty;
         list = new string[] { };
     }
 
-    public Exercise(string exerciseName, string[] exerciseList)
+    public MuscleGroup(string groupName, string[] exerciseList)
     {
-        name = exerciseName;
-        list = exerciseList;
+        name = groupName;
+
+        List<string> capitalizedList = new List<string>();
+        foreach (string item in exerciseList)
+            capitalizedList.Add(Utils.HandleCapitalCase(item));
+
+        list = capitalizedList.ToArray();
+
     }
 
-    public Exercise(string exerciseName)
+    public MuscleGroup(string groupName)
     {
-        name = exerciseName;
+        name = groupName;
         list = new string[] { "First Exercise" };
     }
 }
@@ -42,7 +50,11 @@ public class WorkoutTemplate
     public WorkoutTemplate(string exerciseName, string[] exerciseList)
     {
         name = exerciseName;
-        list = exerciseList;
+        List<string> capitalizedList = new List<string>();
+        foreach (string item in exerciseList)
+            capitalizedList.Add(Utils.HandleCapitalCase(item));
+
+        list = capitalizedList.ToArray();
     }
 
     public WorkoutTemplate(string exerciseName)
@@ -57,11 +69,11 @@ public class WorkoutTemplate
 public class WorkoutSaveData
 {
     public WorkoutTemplate[] myWorkouts;
-    public Exercise[] myExercises;
+    public MuscleGroup[] myMuscleGroups;
 
-    public WorkoutSaveData(WorkoutTemplate[] currentWorkouts, Exercise[] currentExercises)
+    public WorkoutSaveData(WorkoutTemplate[] currentWorkouts, MuscleGroup[] currentGroups)
     {
         myWorkouts = currentWorkouts;
-        myExercises = currentExercises;
+        myMuscleGroups = currentGroups;
     }
 }

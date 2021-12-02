@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
     private bool isEditingWorkoutExercises;
 
     string currentWorkoutTemplateName = string.Empty;
+    int currentMuscleGroupIndex = -1;
 
     private void Start()
     {
@@ -245,7 +246,7 @@ public class UIManager : MonoBehaviour
         // give the input placeholder the initial name
         newItem.transform.GetChild(1).transform.GetChild(0).GetComponent<Text>().text = templateName;
         // assign the button listeners
-        newItem.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() => LoadTemplate(newItem));
+        newItem.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() => LoadWorkoutTemplate(newItem));
         newItem.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() => RemoveWorkoutHandler(newItem));
         // grab the input
         InputField newInputField = newItem.transform.GetChild(1).GetComponent<InputField>();
@@ -279,10 +280,10 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                //this is a new exercise, add it to exercise
-                DataManager.instance.AddExerciseDataToMuscleGroup(currentWorkoutTemplateName, exerciseName);
+                //this is a new exercise, add it to muscle groups
+                DataManager.instance.AddNewExerciseForSpecificMuscleGroup(currentMuscleGroupIndex, exerciseName);
                 // assign the listener
-                newInputField.onEndEdit.AddListener(delegate { HandleExerciseNameChange(newInputField); });
+                newInputField.onEndEdit.AddListener(delegate { HandleExerciseChangeForMuscleGroup(newInputField, currentWorkoutTemplateName); });
                 newItem.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => RemoveExerciseHandler(newItem));
             }
 
@@ -298,7 +299,7 @@ public class UIManager : MonoBehaviour
             else
             {
                 // assign the listeners
-                newInputField.onEndEdit.AddListener(delegate { HandleExerciseChangeForWorkout(newInputField, currentWorkoutTemplateName); });
+                newInputField.onEndEdit.AddListener(delegate { HandleExerciseChangeForMuscleGroup(newInputField, currentWorkoutTemplateName); });
                 newItem.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => RemoveExerciseHandler(newItem));
             }
 
@@ -309,28 +310,29 @@ public class UIManager : MonoBehaviour
     public void HandleExerciseChangeForWorkout(InputField input, string workoutName)
     {
         // grab the new name string
-        string newExerciseName = input.text;
+        string newExerciseName = Utils.HandleCapitalCase(input.text);
         // grab the current name of this exercise
         string oldExerciseName = input.transform.parent.name;
         // update the input to store the new name
-        input.text = Utils.HandleCapitalCase(newExerciseName);
+        input.text = newExerciseName;
         //and update the parent name
         input.transform.parent.name = newExerciseName;
         // push the data update
         DataManager.instance.UpdateExerciseDataForSpecificWorkout(workoutName, oldExerciseName, newExerciseName, input);
     }
 
-    public void HandleExerciseNameChange(InputField input)
+    public void HandleExerciseChangeForMuscleGroup(InputField input, string workoutName)
     {
-        string newExerciseName = input.text;
-        string currentName = input.transform.parent.name;
-        input.text = Utils.HandleCapitalCase(newExerciseName);
+        // grab the new name string
+        string newExerciseName = Utils.HandleCapitalCase(input.text);
+        // grab the current name of this exercise
+        string oldExerciseName = input.transform.parent.name;
+        // update the input to store the new name
+        input.text = newExerciseName;
+        //and update the parent name
         input.transform.parent.name = newExerciseName;
-
-        print("Need to save data for old exercise name: " + currentName + " with new name: " + newExerciseName);
-        //DataManager.instance.UpdateExerciseDataForSpecificWorkout(currentName, newExerciseName);
-
-
+        // push the data update
+        DataManager.instance.UpdateExerciseDataToMuscleGroup(oldExerciseName, newExerciseName, input, currentMuscleGroupIndex);
     }
 
     public void HandleWorkoutNameChange(InputField input)
@@ -344,10 +346,7 @@ public class UIManager : MonoBehaviour
 
     public void RemoveExerciseHandler(GameObject thisItem)
     {
-        print("RemoveExerciseHandler...");
-
-        // Exercise exerciseDataToRemove = DataManager.instance.myExercises.Find((workout) => workout.name == thisItem.name);
-        // DataManager.instance.Rem;
+        DataManager.instance.RemoveMuscleGroupExercise(currentMuscleGroupIndex, thisItem.name);
         Destroy(thisItem);
     }
 
@@ -362,9 +361,11 @@ public class UIManager : MonoBehaviour
         DataManager.instance.RemoveWorkoutExercise(currentWorkoutTemplateName, thisItem.name);
         Destroy(thisItem);
     }
+
+
     ///<summary>Dynamically assigned method when the workout templates are added to the list
     /// Handles the loading of a workout's specific exercises for editing </summary>
-    public void LoadTemplate(GameObject templateObj)
+    public void LoadWorkoutTemplate(GameObject templateObj)
     {
 
         //grab the name of this object, which also will be the name of the workout
@@ -407,26 +408,17 @@ public class UIManager : MonoBehaviour
 
 
 
-    public void LoadSelectedEditData(int selectedIndex)
+    public void LoadSelectedMuscleGroup(int selectedIndex)
     {
         int dropDownOffset = selectedIndex - 1;
-
-        string dataNameToLoad = (isEditingTemplates ? Utils.GetActiveWorkoutName(dropDownOffset) : Utils.GetActiveExerciseName(dropDownOffset));
-        int dataCount = (isEditingTemplates ? Utils.GetActiveWorkout(dropDownOffset).Length : Utils.GetActiveExercises(dropDownOffset).Length);
+        currentMuscleGroupIndex = dropDownOffset;
+        string dataNameToLoad = Utils.GetActiveMuscleGroupName(dropDownOffset);
         ClearOutCurrentGridList();
 
-        if (isEditingTemplates)
-        {
-            WorkoutTemplate currentTemplate = DataManager.instance.myWorkouts.Find((workout) => workout.name == Utils.GetActiveWorkoutName(dropDownOffset));
-            foreach (var item in currentTemplate.list)
-                AddTemplateToList(item, false);
-        }
-        else
-        {
-            Exercise currentExercise = DataManager.instance.myExercises.Find((exercise) => exercise.name == Utils.GetActiveExerciseName(dropDownOffset));
-            foreach (var item in currentExercise.list)
-                AddExercisesToList(item, false, false);
-        }
+        MuscleGroup currentExercise = DataManager.instance.myMuscleGroups.Find((group) => group.name == Utils.GetActiveMuscleGroupName(dropDownOffset));
+        foreach (var item in currentExercise.list)
+            AddExercisesToList(item, false, false);
+
     }
 
     void ClearOutCurrentGridList()
@@ -437,7 +429,7 @@ public class UIManager : MonoBehaviour
                 Destroy(WorkoutGridList.transform.GetChild(i).gameObject);
     }
 
-
+    #region Color Updates
     public void HandleColorChangeFromUpdate(Text textToChange, bool successfulUpdate)
     {
         StartCoroutine(HandleColorChange(textToChange, successfulUpdate));
@@ -479,5 +471,8 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
     }
+
+    #endregion
+
 
 }
