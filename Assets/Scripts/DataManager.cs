@@ -36,6 +36,8 @@ public class DataManager : MonoBehaviour
         print("Saving file...");
         SaveWorkout.SaveFile();
         UIManager.instance.HandleColorChangeFromSave(saveIcon);
+        // We've now saved so make sure we reflect that change on the start screens
+        UIManager.instance.DataStartupChecker.text = "Edit Your Data";
     }
 
     private void LoadSavedData()
