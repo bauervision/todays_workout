@@ -459,4 +459,25 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void HandleColorChangeFromSave(Image imageToChange)
+    {
+        StartCoroutine(HandleColorChange(imageToChange));
+    }
+
+    IEnumerator HandleColorChange(Image imageToChange)
+    {
+        float timeElapsed = 0f;
+        float totalTime = 1f;
+
+        Color startColor = Color.green;
+        Color endColor = imageToChange.color;
+
+        while (timeElapsed < totalTime)
+        {
+            timeElapsed += Time.deltaTime;
+            imageToChange.color = Color.Lerp(startColor, endColor, timeElapsed / totalTime);
+            yield return null;
+        }
+    }
+
 }

@@ -10387,7 +10387,7 @@ GameObject:
   - component: {fileID: 1421375960}
   - component: {fileID: 1421375959}
   m_Layer: 5
-  m_Name: Image
+  m_Name: SaveImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15079,6 +15079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3263dccaea33a0f46b961408f28cf2a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveIcon: {fileID: 1421375959}
   myWorkouts: []
   myExercises: []
   abs:

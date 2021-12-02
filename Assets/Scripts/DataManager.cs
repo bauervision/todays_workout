@@ -8,6 +8,8 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager instance;
 
+    public Image saveIcon;
+
 
     public List<WorkoutTemplate> myWorkouts;
     public List<Exercise> myExercises;
@@ -19,7 +21,7 @@ public class DataManager : MonoBehaviour
         if (SaveWorkout.CheckFirstTimeData())
         {
             print("Save file detected! Loading Data...");
-
+            LoadSavedData();
         }
         else
         {
@@ -33,6 +35,7 @@ public class DataManager : MonoBehaviour
     {
         print("Saving file...");
         SaveWorkout.SaveFile();
+        UIManager.instance.HandleColorChangeFromSave(saveIcon);
     }
 
     private void LoadSavedData()
@@ -40,6 +43,7 @@ public class DataManager : MonoBehaviour
         WorkoutSaveData loadedData = SaveWorkout.LoadFile();
         DataManager.instance.myWorkouts = loadedData.myWorkouts.ToList();
         DataManager.instance.myExercises = loadedData.myExercises.ToList();
+        UIManager.instance.UpdateWorkoutDropDown();
     }
 
 
@@ -197,6 +201,7 @@ public class DataManager : MonoBehaviour
         if (workoutIndexToUpdate != -1)
         {
             DataManager.instance.myWorkouts.RemoveAt(workoutIndexToUpdate);
+            UIManager.instance.UpdateWorkoutDropDown();
         }
     }
 
