@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DataManager : MonoBehaviour
 {
@@ -105,4 +106,120 @@ public class DataManager : MonoBehaviour
         myWorkouts.Add(new WorkoutTemplate(exerciseName));
     }
 
+    public void AddNewExerciseForSpecificWorkout(string workoutName, string newExercise)
+    {
+        print("Updating: " + workoutName + " with new exercise name: " + newExercise);
+        // find current workout data template
+        DataManager.instance.myWorkouts.Find((workout) => workout.name == workoutName).list.ToList().Add(newExercise);
+        // grab the list of exercises for this workout
+        //string[] listToUpdate = currentWorkout.list;
+
+        //string[] updatedList = DataManager.instance.myWorkouts.Find((workout) => workout.name == currentTemplate).list;
+        //print("Added new Exercise..." + updatedList.ToString());
+        //updatedList.ToList().Add(exerciseName);
+        // now update the workout data
+        //DataManager.instance.myWorkouts.Find((workout) => workout.name == currentTemplate).list = updatedList;
+    }
+
+    ///<summary>When the user has made a text change for a specific exercise within a workout, update the data. If the updated name isn't found, it will add it to the data </summary>
+    public void UpdateExerciseDataForSpecificWorkout(string workoutName, string oldExerciseName, string newExerciseName, InputField textToUpdate)
+    {
+        // find current workout data template
+        int workoutIndexToUpdate = DataManager.instance.myWorkouts.FindIndex((workout) => workout.name == workoutName);
+        // make sure we found it
+        if (workoutIndexToUpdate != -1)
+        {
+            int exerciseIndexToUpdate = DataManager.instance.myWorkouts[workoutIndexToUpdate].list.ToList().FindIndex(exercise => exercise == oldExerciseName);
+            // make sure we found it
+            if (exerciseIndexToUpdate != -1)
+            {
+                DataManager.instance.myWorkouts[workoutIndexToUpdate].list[exerciseIndexToUpdate] = newExerciseName;
+                UIManager.instance.HandleColorChangeFromUpdate(textToUpdate.transform.GetChild(2).transform.GetComponent<Text>(), true);
+            }
+            else
+            {
+                // couldnt find this exercise in the current data, so we add it
+                string[] updateList = DataManager.instance.myWorkouts[workoutIndexToUpdate].list;
+                List<string> newList = updateList.ToList();
+                newList.Add(newExerciseName);
+                DataManager.instance.myWorkouts[workoutIndexToUpdate].list = newList.ToArray();
+                UIManager.instance.HandleColorChangeFromUpdate(textToUpdate.transform.GetChild(2).transform.GetComponent<Text>(), true);
+            }
+
+            UIManager.instance.UpdateWorkoutDropDown();
+        }
+        else
+        {
+            Debug.LogError("UpdateExerciseDataForSpecificWorkout | Couldnt find: " + workoutName + " in the data");
+            UIManager.instance.HandleColorChangeFromUpdate(textToUpdate.transform.GetChild(2).transform.GetComponent<Text>(), false);
+        }
+
+    }
+
+    public void AddExerciseDataToMuscleGroup(string muscleGroupName, string newExercise)
+    {
+        print("Adding New Exercise: " + newExercise + " to muscle group " + muscleGroupName);
+
+        // add new data to the list of this workout
+        //string[] updatedList = DataManager.instance.myWorkouts.Find((workout) => workout.name == currentTemplate).list;
+        //print("Added new Exercise..." + updatedList.ToString());
+        //updatedList.ToList().Add(exerciseName);
+        // now update the workout data
+        //DataManager.instance.myWorkouts.Find((workout) => workout.name == currentTemplate).list = updatedList;
+    }
+
+
+    ///<summary>Called from UIManager when the user has changed the name of a workout template, includes color changing confirmation </summary>
+    public void UpdateWorkoutName(string oldWorkoutName, string newWorkoutName, InputField textToUpdate)
+    {
+        int workoutIndexToUpdate = DataManager.instance.myWorkouts.FindIndex((workout) => workout.name == oldWorkoutName);
+        // make sure we found it
+        if (workoutIndexToUpdate != -1)
+        {
+            DataManager.instance.myWorkouts[workoutIndexToUpdate].name = newWorkoutName;
+            UIManager.instance.UpdateWorkoutDropDown();
+            UIManager.instance.HandleColorChangeFromUpdate(textToUpdate.transform.GetChild(2).transform.GetComponent<Text>(), true);
+        }
+        else
+        {
+            Debug.LogError("UpdateWorkoutName | Couldnt find: " + oldWorkoutName + " in the data");
+            UIManager.instance.HandleColorChangeFromUpdate(textToUpdate.transform.GetChild(2).transform.GetComponent<Text>(), false);
+        }
+
+    }
+
+
+    ///<summary>Called from UIManager when the user has decided to remove an entire workout routine </summary>
+    public void RemoveWorkout(string workoutName)
+    {
+        int workoutIndexToUpdate = DataManager.instance.myWorkouts.FindIndex((workout) => workout.name == workoutName);
+        // make sure we found it
+        if (workoutIndexToUpdate != -1)
+        {
+            DataManager.instance.myWorkouts.RemoveAt(workoutIndexToUpdate);
+        }
+    }
+
+    ///<summary>Called from UIManager when the user has decided to remove a specific exercise from a workout </summary>
+    public void RemoveWorkoutExercise(string workoutName, string exerciseName)
+    {
+        int workoutIndexToUpdate = DataManager.instance.myWorkouts.FindIndex((workout) => workout.name == workoutName);
+        // make sure we found it
+        if (workoutIndexToUpdate != -1)
+        {
+            int exerciseIndexToUpdate = DataManager.instance.myWorkouts[workoutIndexToUpdate].list.ToList().FindIndex(exercise => exercise == exerciseName);
+            // make sure we found it
+            if (exerciseIndexToUpdate != -1)
+            {
+                string[] updateList = DataManager.instance.myWorkouts[workoutIndexToUpdate].list;
+                List<string> newList = updateList.ToList();
+                newList.RemoveAt(exerciseIndexToUpdate);
+                DataManager.instance.myWorkouts[workoutIndexToUpdate].list = newList.ToArray();
+            }
+            else
+                Debug.LogError("Didnt find exercise: " + exerciseName + " in " + workoutName);
+        }
+        else
+            Debug.LogError("Didnt find workout: " + workoutName);
+    }
 }

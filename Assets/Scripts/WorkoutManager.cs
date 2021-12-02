@@ -131,18 +131,22 @@ public class WorkoutManager : MonoBehaviour
     }
 
 
-
+    ///<summary>Called from the start screen, when the user has chosen a specific workout to load. </summary>
     public void LoadSelectedTemplate()
     {
         ClearExerciseList();
+        // since we have loaded a specific workout, we have not chosen to go random
         Randomizer.SetActive(false);
 
-        // handle UI switch
+        // handle UI screen switch
         UIManager.instance.ShowMainScreen();
+        // we want to be able to "Add Another..."
         ShowWorkoutInput();
+        // show the name of the current workout template at the top
         ActiveWorkoutText.text = Utils.GetActiveWorkoutName(SelectedTemplate);
+        // set the active workout data
         ActiveWorkoutTemplate = Utils.GetActiveWorkout(SelectedTemplate);
-        // run thru and add all the workouts for this template
+        // finally run thru and add all the workouts for this template
         if (ActiveWorkoutTemplate != null)
             foreach (string workout in ActiveWorkoutTemplate)
                 AddNewWorkout(workout);

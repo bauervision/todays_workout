@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -41,7 +42,7 @@ public class UIManager : MonoBehaviour
     bool isEditingTemplates = false;
     private bool isEditingWorkoutExercises;
 
-    string currentTemplate = string.Empty;
+    string currentWorkoutTemplateName = string.Empty;
 
     private void Start()
     {
@@ -58,6 +59,7 @@ public class UIManager : MonoBehaviour
     }
 
 
+    #region Help Methods
     public void ShowMainHelp()
     {
         HelpScreen.SetActive(true);
@@ -104,12 +106,13 @@ public class UIManager : MonoBehaviour
 
     }
 
-
-
     public void HideHelp()
     {
         HelpScreen.SetActive(false);
     }
+
+    #endregion
+
 
     public void UpdateWorkoutDropDown()
     {
@@ -165,7 +168,7 @@ public class UIManager : MonoBehaviour
             isEditingWorkoutExercises = false;
         }
 
-        currentTemplate = string.Empty;
+        currentWorkoutTemplateName = string.Empty;
         isEditingTemplates = true;
         AddTemplateExerciseBtn.text = "Add New Workout";
         TemplateBtn.Select();
@@ -184,7 +187,7 @@ public class UIManager : MonoBehaviour
 
     public void ExerciseButtonSelected()
     {
-        currentTemplate = string.Empty;
+        currentWorkoutTemplateName = string.Empty;
         isEditingWorkoutExercises = false;
         TemplateBtn.transform.GetChild(1).transform.GetComponent<Text>().text = "Templates";
         isEditingTemplates = false;
@@ -221,146 +224,170 @@ public class UIManager : MonoBehaviour
     {
         // templates get an item that allows user to load exercises from a specific template for editing
         if (isEditingTemplates)
-            if (!isEditingWorkoutExercises)
+            if (!isEditingWorkoutExercises)//if we want to add a whole new workout...
                 AddTemplateToList("New Workout...", true);
-            else
+            else//otherwise we want to add a new exercise to this workout
                 AddExercisesToList("New Exercise...", true, true);
-        else
+        else//we just want to add a new exercise
             AddExercisesToList("New Exercise...", true, false);
 
 
     }
 
+    ///<summary>User has pressed the button to add a new workout routine </summary>
     void AddTemplateToList(string templateName, bool isNew)
     {
         if (isNew)
-            DataManager.instance.myWorkouts.Add(new WorkoutTemplate(templateName));
+            DataManager.instance.AddNewWorkoutTemplate(templateName);
 
         GameObject newItem = Instantiate(TemplateBtnItem, WorkoutGridList.transform);
         newItem.name = templateName;
-        // give the input placeholder a starting text
+        // give the input placeholder the initial name
         newItem.transform.GetChild(1).transform.GetChild(0).GetComponent<Text>().text = templateName;
         // assign the button listeners
         newItem.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() => LoadTemplate(newItem));
         newItem.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() => RemoveWorkoutHandler(newItem));
         // grab the input
         InputField newInputField = newItem.transform.GetChild(1).GetComponent<InputField>();
-        // assign the listner
-        newInputField.onEndEdit.AddListener(delegate { HandleTextChange(newInputField); });
+        // assign the listener
+        newInputField.onEndEdit.AddListener(delegate { HandleWorkoutNameChange(newInputField); });
     }
 
+    ///<summary>User has pressed the button to add a new exercise </summary>
     void AddExercisesToList(string exerciseName, bool isNew, bool isTemplateExercise)
     {
+        //spawn the new list item
         GameObject newItem = Instantiate(WorkoutNameItem, WorkoutGridList.transform);
         newItem.name = exerciseName;
-        // give the input placeholder a starting text
+        // give the input placeholder the initial name
         newItem.transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = exerciseName;
-        // assign the button listner
-        newItem.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => RemoveExerciseHandler(newItem));
+
         // grab the input
         InputField newInputField = newItem.transform.GetChild(0).GetComponent<InputField>();
 
 
         if (isNew)
         {
-
+            // this is a new exercise for a workout
             if (isTemplateExercise)
             {
-                // add new data to the list of this workout
-                string[] updatedList = DataManager.instance.myWorkouts.Find((workout) => workout.name == currentTemplate).list;
-                updatedList.ToList().Add(exerciseName);
-                // now update the workout data
-                DataManager.instance.myWorkouts.Find((workout) => workout.name == currentTemplate).list = updatedList;
-
-
-                // assign the listner
-                newInputField.onEndEdit.AddListener(delegate { HandleTextChange(newInputField, currentTemplate); });
+                // add the new data
+                DataManager.instance.AddNewExerciseForSpecificWorkout(currentWorkoutTemplateName, exerciseName);
+                // assign the listeners
+                newInputField.onEndEdit.AddListener(delegate { HandleExerciseChangeForWorkout(newInputField, currentWorkoutTemplateName); });
+                newItem.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => RemoveWorkoutExerciseHandler(newItem));
             }
             else
             {
                 //this is a new exercise, add it to exercise
-                DataManager.instance.myExercises.Add(new Exercise(exerciseName));
+                DataManager.instance.AddExerciseDataToMuscleGroup(currentWorkoutTemplateName, exerciseName);
                 // assign the listener
-                newInputField.onEndEdit.AddListener(delegate { HandleTextChange(newInputField); });
+                newInputField.onEndEdit.AddListener(delegate { HandleExerciseNameChange(newInputField); });
+                newItem.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => RemoveExerciseHandler(newItem));
             }
 
         }
-        else //this is not new
+        else //We have loaded exercises from a template for editing
         {
-            // assign the listener
-            newInputField.onEndEdit.AddListener(delegate { HandleTextChange(newInputField); });
+            if (isEditingWorkoutExercises)
+            {
+                // assign the listeners
+                newInputField.onEndEdit.AddListener(delegate { HandleExerciseChangeForWorkout(newInputField, currentWorkoutTemplateName); });
+                newItem.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => RemoveWorkoutExerciseHandler(newItem));
+            }
+            else
+            {
+                // assign the listeners
+                newInputField.onEndEdit.AddListener(delegate { HandleExerciseChangeForWorkout(newInputField, currentWorkoutTemplateName); });
+                newItem.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => RemoveExerciseHandler(newItem));
+            }
+
         }
 
     }
 
-    public void HandleTextChange(InputField input, string workoutName)
+    public void HandleExerciseChangeForWorkout(InputField input, string workoutName)
     {
-        string currentName = input.transform.parent.name;
-        input.text = Utils.HandleCapitalCase(input.text);
-        input.transform.parent.name = input.text;
+        // grab the new name string
+        string newExerciseName = input.text;
+        // grab the current name of this exercise
+        string oldExerciseName = input.transform.parent.name;
+        // update the input to store the new name
+        input.text = Utils.HandleCapitalCase(newExerciseName);
+        //and update the parent name
+        input.transform.parent.name = newExerciseName;
+        // push the data update
+        DataManager.instance.UpdateExerciseDataForSpecificWorkout(workoutName, oldExerciseName, newExerciseName, input);
+    }
 
-        // we want to update the name of this exercise--within a workout, so we need to find out the workout first
-        WorkoutTemplate currentWorkout = DataManager.instance.myWorkouts.Find((workout) => workout.name == workoutName);
-        //now find the exercise within that workout
-        int indexOfUpdatedExercise = currentWorkout.list.ToList().FindIndex(exercisename => exercisename == currentName);
-        // and make the update
-        if (indexOfUpdatedExercise != -1)
-            currentWorkout.list[indexOfUpdatedExercise] = input.text;
+    public void HandleExerciseNameChange(InputField input)
+    {
+        string newExerciseName = input.text;
+        string currentName = input.transform.parent.name;
+        input.text = Utils.HandleCapitalCase(newExerciseName);
+        input.transform.parent.name = newExerciseName;
+
+        print("Need to save data for old exercise name: " + currentName + " with new name: " + newExerciseName);
+        //DataManager.instance.UpdateExerciseDataForSpecificWorkout(currentName, newExerciseName);
+
 
     }
 
-    public void HandleTextChange(InputField input)
+    public void HandleWorkoutNameChange(InputField input)
     {
-        string currentName = input.transform.parent.name;
+        string newWorkoutName = input.text;
+        string currentWorkoutName = input.transform.parent.name;
         input.text = Utils.HandleCapitalCase(input.text);
         input.transform.parent.name = input.text;
-
-        // we want to update the name, so we need to find out which item this represents
-        if (isEditingTemplates)
-            DataManager.instance.myWorkouts.Find((workout) => workout.name == currentName).name = input.text;
-        else
-            DataManager.instance.myExercises.Find((exercise) => exercise.name == currentName).name = input.text;
-
+        DataManager.instance.UpdateWorkoutName(currentWorkoutName, newWorkoutName, input);
     }
 
     public void RemoveExerciseHandler(GameObject thisItem)
     {
-        Exercise exerciseDataToRemove = DataManager.instance.myExercises.Find((workout) => workout.name == thisItem.name);
-        DataManager.instance.myExercises.Remove(exerciseDataToRemove);
+        print("RemoveExerciseHandler...");
+
+        // Exercise exerciseDataToRemove = DataManager.instance.myExercises.Find((workout) => workout.name == thisItem.name);
+        // DataManager.instance.Rem;
         Destroy(thisItem);
     }
 
     public void RemoveWorkoutHandler(GameObject thisItem)
     {
-        WorkoutTemplate workoutDataToRemove = DataManager.instance.myWorkouts.Find((workout) => workout.name == thisItem.name);
-        DataManager.instance.myWorkouts.Remove(workoutDataToRemove);
+        DataManager.instance.RemoveWorkout(thisItem.name);
         Destroy(thisItem);
     }
 
+    public void RemoveWorkoutExerciseHandler(GameObject thisItem)
+    {
+        DataManager.instance.RemoveWorkoutExercise(currentWorkoutTemplateName, thisItem.name);
+        Destroy(thisItem);
+    }
+    ///<summary>Dynamically assigned method when the workout templates are added to the list
+    /// Handles the loading of a workout's specific exercises for editing </summary>
     public void LoadTemplate(GameObject templateObj)
     {
-        LoadTemplateExercises(templateObj.name);
-    }
 
-    void LoadTemplateExercises(string templateName)
-    {
-        currentTemplate = templateName;
+        //grab the name of this object, which also will be the name of the workout
+        currentWorkoutTemplateName = templateObj.name;
+        // we are loading exercises for this template
         isEditingWorkoutExercises = true;
+        // clearout the current list
         ClearOutCurrentGridList();
 
-        if (isEditingTemplates)
-        {
-            WorkoutTemplate currentTemplate = DataManager.instance.myWorkouts.Find((workout) => workout.name == templateName);
-            foreach (var item in currentTemplate.list)
-                AddExercisesToList(item, false, false);
-        }
+        // we need to grab the exercises for this workout
+        WorkoutTemplate currentTemplate = DataManager.instance.myWorkouts.Find((workout) => workout.name == currentWorkoutTemplateName);
+        // and add them to the list
+        foreach (var item in currentTemplate.list)
+            AddExercisesToList(item, false, false);
 
-        // update the template button
+        // update the template button to show that we can go back to the templates
         TemplateBtn.transform.GetChild(1).transform.GetComponent<Text>().text = "Return To Templates";
-        AddTemplateExerciseBtn.text = $"Add New {templateName} Exercise";
+        // update the add new button to show that we can now add exercises explicitly to this workout
+        AddTemplateExerciseBtn.text = $"Add New {currentWorkoutTemplateName} Exercise";
     }
 
 
+    ///<summary>Called from the start screen dropdown when the user wants to load a template workout</summary>
     public void SetTemplateIndex(int index)
     {
         if (index != 0)
@@ -411,5 +438,25 @@ public class UIManager : MonoBehaviour
     }
 
 
+    public void HandleColorChangeFromUpdate(Text textToChange, bool successfulUpdate)
+    {
+        StartCoroutine(HandleColorChange(textToChange, successfulUpdate));
+    }
+
+    IEnumerator HandleColorChange(Text textToChange, bool successfulUpdate)
+    {
+        float timeElapsed = 0f;
+        float totalTime = 1f;
+
+        Color startColor = Color.green;
+        Color endColor = textToChange.color;
+
+        while (timeElapsed < totalTime)
+        {
+            timeElapsed += Time.deltaTime;
+            textToChange.color = Color.Lerp(startColor, endColor, timeElapsed / totalTime);
+            yield return null;
+        }
+    }
 
 }
