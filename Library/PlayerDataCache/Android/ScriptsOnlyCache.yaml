@@ -427,4 +427,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/Workout Plan.unity
-  playerPath: C:/Bauer/Dev/Apps/WorkoutPlanner/Workout Planner/MyWorkout.apk
+  playerPath: C:/Bauer/Dev/Apps/WorkoutPlanner/Workout Planner/MyWorkoutPlanner.aab

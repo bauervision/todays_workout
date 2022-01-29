@@ -102,8 +102,8 @@ public class UIManager : MonoBehaviour
         HelpParent.transform.GetChild(1).gameObject.SetActive(false);
         HelpParent.transform.GetChild(2).gameObject.SetActive(false);
 
-        HelpParent.transform.GetChild(3).gameObject.SetActive(!EditDataChoices.activeInHierarchy);
-        HelpParent.transform.GetChild(4).gameObject.SetActive(EditDataChoices.activeInHierarchy);
+        // HelpParent.transform.GetChild(3).gameObject.SetActive(!EditDataChoices.activeInHierarchy);
+        // HelpParent.transform.GetChild(4).gameObject.SetActive(EditDataChoices.activeInHierarchy);
 
     }
 
@@ -181,7 +181,7 @@ public class UIManager : MonoBehaviour
         foreach (WorkoutTemplate workout in DataManager.instance.myWorkouts)
             AddTemplateToList(workout.name, false);
 
-        EditDataChoices.SetActive(false);
+        //EditDataChoices.SetActive(false);
 
 
     }
@@ -198,7 +198,7 @@ public class UIManager : MonoBehaviour
         //change non selected
         TemplateBtn.transform.GetChild(1).transform.GetComponent<Text>().fontStyle = FontStyle.Normal;
         ClearOutCurrentGridList();
-        EditDataChoices.SetActive(true);
+        //EditDataChoices.SetActive(true);
     }
 
     public void RandomWorkoutScreens()
@@ -337,6 +337,9 @@ public class UIManager : MonoBehaviour
 
     public void HandleWorkoutNameChange(InputField input)
     {
+        if (input.text.Length == 0)
+            return;
+
         string newWorkoutName = input.text;
         string currentWorkoutName = input.transform.parent.name;
         input.text = Utils.HandleCapitalCase(input.text);
