@@ -309,6 +309,8 @@ public class UIManager : MonoBehaviour
 
     public void HandleExerciseChangeForWorkout(InputField input, string workoutName)
     {
+        if (input.text.Length == 0)
+            return;
         // grab the new name string
         string newExerciseName = Utils.HandleCapitalCase(input.text);
         // grab the current name of this exercise
@@ -323,6 +325,9 @@ public class UIManager : MonoBehaviour
 
     public void HandleExerciseChangeForMuscleGroup(InputField input, string workoutName)
     {
+        if (input.text.Length == 0)
+            return;
+
         // grab the new name string
         string newExerciseName = Utils.HandleCapitalCase(input.text);
         // grab the current name of this exercise
