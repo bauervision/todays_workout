@@ -383,7 +383,7 @@ ScriptsOnlyBuild:
     className: WorkoutManager
   - hash:
       serializedVersion: 2
-      Hash: 520952187c1a268be110970193dc7dd5
+      Hash: a41d8e5d79d8b9d4eb78f718321d4468
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager

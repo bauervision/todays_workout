@@ -70,16 +70,24 @@ public class WorkoutManager : MonoBehaviour
 
     public void GoBackToStart()
     {
-        UIManager.instance.BackToStart();
-        workoutTime = 0;
-        StartText.text = "Start";
-        hasStarted = false;
-        TimerText.text = ProcessWorkoutTime(workoutTime);
-        Inputs.SetActive(true);
-        RoundsCounter.SetActive(false);
-        totalRounds = 0;
-        if (Randomizer.activeInHierarchy)
-            Randomizer.SetActive(false);
+        if (UIManager.instance.isEditingWorkoutExercises)
+        {
+            GoToEditScreen();
+        }
+        else
+        {
+            UIManager.instance.BackToStart();
+            workoutTime = 0;
+            StartText.text = "Start";
+            hasStarted = false;
+            TimerText.text = ProcessWorkoutTime(workoutTime);
+            Inputs.SetActive(true);
+            RoundsCounter.SetActive(false);
+            totalRounds = 0;
+            if (Randomizer.activeInHierarchy)
+                Randomizer.SetActive(false);
+        }
+
     }
 
     public void GoToEditScreen()

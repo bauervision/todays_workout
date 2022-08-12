@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     public Button ExerciseBtn;
     public Text AddTemplateExerciseBtn;
     public Text DataStartupChecker;
+    public Text EditDataText;
     public GameObject HelpParent;
     public Button LaunchTemplateBtn;
     public GameObject EditDataChoices;
@@ -40,7 +41,7 @@ public class UIManager : MonoBehaviour
 
     List<string> dropDownOptions = new List<string>();
     bool isEditingTemplates = false;
-    private bool isEditingWorkoutExercises;
+    public bool isEditingWorkoutExercises;
 
     string currentWorkoutTemplateName = string.Empty;
     int currentMuscleGroupIndex = -1;
@@ -118,7 +119,7 @@ public class UIManager : MonoBehaviour
     public void UpdateWorkoutDropDown()
     {
         // clearout what we currently have
-        EditDataDropdown.ClearOptions();
+        //EditDataDropdown.ClearOptions();
         LoadDataDropdown.ClearOptions();
         dropDownOptions.Clear();
 
@@ -131,7 +132,7 @@ public class UIManager : MonoBehaviour
 
         // finally load the options into the dropdowns
         LoadDataDropdown.AddOptions(dropDownOptions);
-        EditDataDropdown.AddOptions(dropDownOptions);
+        //EditDataDropdown.AddOptions(dropDownOptions);
     }
     public void StartFresh()
     {
@@ -162,41 +163,41 @@ public class UIManager : MonoBehaviour
 
     public void TemplateButtonSelected()
     {
+
         // if we are currently editing the exercises for a workout template then we just need to go back to our template page
         if (isEditingWorkoutExercises)
         {
-            TemplateBtn.transform.GetChild(1).transform.GetComponent<Text>().text = "Templates";
+            EditDataText.text = "Templates";
             isEditingWorkoutExercises = false;
         }
+
 
         currentWorkoutTemplateName = string.Empty;
         isEditingTemplates = true;
         AddTemplateExerciseBtn.text = "Add New Workout";
-        TemplateBtn.Select();
-        TemplateBtn.transform.GetChild(1).transform.GetComponent<Text>().fontStyle = FontStyle.Bold;
+        //TemplateBtn.Select();
+        EditDataText.fontStyle = FontStyle.Bold;
         //change non selected
-        ExerciseBtn.transform.GetChild(1).transform.GetComponent<Text>().fontStyle = FontStyle.Normal;
+        EditDataText.fontStyle = FontStyle.Normal;
         ClearOutCurrentGridList();
         // now populate the list with the main categories for all of the workouts
         foreach (WorkoutTemplate workout in DataManager.instance.myWorkouts)
             AddTemplateToList(workout.name, false);
 
-        //EditDataChoices.SetActive(false);
-
-
     }
 
     public void ExerciseButtonSelected()
     {
+
         currentWorkoutTemplateName = string.Empty;
         isEditingWorkoutExercises = false;
-        TemplateBtn.transform.GetChild(1).transform.GetComponent<Text>().text = "Templates";
+
         isEditingTemplates = false;
         AddTemplateExerciseBtn.text = "Add New Exercise";
         ExerciseBtn.Select();
-        ExerciseBtn.transform.GetChild(1).transform.GetComponent<Text>().fontStyle = FontStyle.Bold;
+        EditDataText.fontStyle = FontStyle.Bold;
         //change non selected
-        TemplateBtn.transform.GetChild(1).transform.GetComponent<Text>().fontStyle = FontStyle.Normal;
+        EditDataText.fontStyle = FontStyle.Normal;
         ClearOutCurrentGridList();
         //EditDataChoices.SetActive(true);
     }
@@ -231,7 +232,6 @@ public class UIManager : MonoBehaviour
                 AddExercisesToList("New Exercise...", true, true);
         else//we just want to add a new exercise
             AddExercisesToList("New Exercise...", true, false);
-
 
     }
 
@@ -375,7 +375,7 @@ public class UIManager : MonoBehaviour
     /// Handles the loading of a workout's specific exercises for editing </summary>
     public void LoadWorkoutTemplate(GameObject templateObj)
     {
-
+        EditDataText.text = templateObj.name + " Exercises";
         //grab the name of this object, which also will be the name of the workout
         currentWorkoutTemplateName = templateObj.name;
         // we are loading exercises for this template
@@ -390,7 +390,7 @@ public class UIManager : MonoBehaviour
             AddExercisesToList(item, false, false);
 
         // update the template button to show that we can go back to the templates
-        TemplateBtn.transform.GetChild(1).transform.GetComponent<Text>().text = "Return To Templates";
+        //TemplateBtn.transform.GetChild(1).transform.GetComponent<Text>().text = "Return To Templates";
         // update the add new button to show that we can now add exercises explicitly to this workout
         AddTemplateExerciseBtn.text = $"Add New {currentWorkoutTemplateName} Exercise";
     }

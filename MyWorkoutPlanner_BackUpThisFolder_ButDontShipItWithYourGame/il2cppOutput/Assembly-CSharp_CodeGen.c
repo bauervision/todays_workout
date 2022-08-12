@@ -1,0 +1,685 @@
+﻿#include "pch-c.h"
+#ifndef _MSC_VER
+# include <alloca.h>
+#else
+# include <malloc.h>
+#endif
+
+
+#include "codegen/il2cpp-codegen-metadata.h"
+
+
+
+
+
+// 0x00000001 System.Void DataManager::Start()
+extern void DataManager_Start_m29149084C328BA04088BB5398109A6107C41F1D4 (void);
+// 0x00000002 System.Void DataManager::SaveData()
+extern void DataManager_SaveData_m3245682B43A6CC45F56F9FB089BCEBC7AA0279A8 (void);
+// 0x00000003 System.Void DataManager::LoadSavedData()
+extern void DataManager_LoadSavedData_mBF42B3AB386334901276A55C6A9DF3617F1366A9 (void);
+// 0x00000004 System.Void DataManager::LoadDefaultData()
+extern void DataManager_LoadDefaultData_mCDFF176708491B0340E5E0D585C5E0F32B1A9BFE (void);
+// 0x00000005 System.Void DataManager::AddNewWorkoutTemplate(System.String)
+extern void DataManager_AddNewWorkoutTemplate_m649513CF8304D6D4477EFCC72EDA8D31FF6765BD (void);
+// 0x00000006 System.Void DataManager::AddNewExerciseForSpecificWorkout(System.String,System.String)
+extern void DataManager_AddNewExerciseForSpecificWorkout_mF7B6B84832EFDA5C9C552DF8B1EC9F27A1DE0FAA (void);
+// 0x00000007 System.Void DataManager::AddNewExerciseForSpecificMuscleGroup(System.Int32,System.String)
+extern void DataManager_AddNewExerciseForSpecificMuscleGroup_mB3D9112614EB3AC4D8E61CD777111CFD9BAF2424 (void);
+// 0x00000008 System.Void DataManager::UpdateExerciseDataForSpecificWorkout(System.String,System.String,System.String,UnityEngine.UI.InputField)
+extern void DataManager_UpdateExerciseDataForSpecificWorkout_m8891997C95C8E278702AD19CB7153613C7C7632E (void);
+// 0x00000009 System.Void DataManager::UpdateExerciseDataToMuscleGroup(System.String,System.String,UnityEngine.UI.InputField,System.Int32)
+extern void DataManager_UpdateExerciseDataToMuscleGroup_m2A1400A5D3111E3758547C9B9496CA69A938D2B9 (void);
+// 0x0000000A System.Void DataManager::UpdateWorkoutName(System.String,System.String,UnityEngine.UI.InputField)
+extern void DataManager_UpdateWorkoutName_mA685978A9A6F64F82FB5FE89C53237B3369E6D1F (void);
+// 0x0000000B System.Void DataManager::RemoveWorkout(System.String)
+extern void DataManager_RemoveWorkout_m1A8EC0B1D9FF86FF5A0D776F927A64E13C2C09AF (void);
+// 0x0000000C System.Void DataManager::RemoveWorkoutExercise(System.String,System.String)
+extern void DataManager_RemoveWorkoutExercise_m17FD23A725BB57E91DBEFF0E0F3E6D964F30ABEE (void);
+// 0x0000000D System.Void DataManager::RemoveMuscleGroupExercise(System.Int32,System.String)
+extern void DataManager_RemoveMuscleGroupExercise_mF90D9E0FCEF912EDBE7F71AEF9B325DC78E74CE6 (void);
+// 0x0000000E System.Void DataManager::.ctor()
+extern void DataManager__ctor_mD735B7F80F3DE13E2BB45118CDA7FA619330DCDA (void);
+// 0x0000000F System.Void DataManager/<>c__DisplayClass24_0::.ctor()
+extern void U3CU3Ec__DisplayClass24_0__ctor_m895A7A6C9A66F6D3C7694101D12DC3A36492272F (void);
+// 0x00000010 System.Boolean DataManager/<>c__DisplayClass24_0::<AddNewExerciseForSpecificWorkout>b__0(WorkoutTemplate)
+extern void U3CU3Ec__DisplayClass24_0_U3CAddNewExerciseForSpecificWorkoutU3Eb__0_mB8B98C03005841B5C04B1644C0BA4B67ED5BB428 (void);
+// 0x00000011 System.Void DataManager/<>c__DisplayClass26_0::.ctor()
+extern void U3CU3Ec__DisplayClass26_0__ctor_m3B638B98C0B3800AC4E329C9D85EE7549962DC46 (void);
+// 0x00000012 System.Boolean DataManager/<>c__DisplayClass26_0::<UpdateExerciseDataForSpecificWorkout>b__0(WorkoutTemplate)
+extern void U3CU3Ec__DisplayClass26_0_U3CUpdateExerciseDataForSpecificWorkoutU3Eb__0_mDF294F2AF53EE3A19E27EAFC4D6169A7B1156275 (void);
+// 0x00000013 System.Boolean DataManager/<>c__DisplayClass26_0::<UpdateExerciseDataForSpecificWorkout>b__1(System.String)
+extern void U3CU3Ec__DisplayClass26_0_U3CUpdateExerciseDataForSpecificWorkoutU3Eb__1_m9A040742C076397D50DFEDE12DFBAC8B515F749C (void);
+// 0x00000014 System.Void DataManager/<>c__DisplayClass27_0::.ctor()
+extern void U3CU3Ec__DisplayClass27_0__ctor_mB0F8C2A601589FE2356CDE303DFD604FC5A33A06 (void);
+// 0x00000015 System.Boolean DataManager/<>c__DisplayClass27_0::<UpdateExerciseDataToMuscleGroup>b__0(System.String)
+extern void U3CU3Ec__DisplayClass27_0_U3CUpdateExerciseDataToMuscleGroupU3Eb__0_m4F6FEF02DDD8EF209C18376A022F23E8C6A05A9C (void);
+// 0x00000016 System.Void DataManager/<>c__DisplayClass28_0::.ctor()
+extern void U3CU3Ec__DisplayClass28_0__ctor_m918C269C46E218AD3715A0F6837B14DD2D325424 (void);
+// 0x00000017 System.Boolean DataManager/<>c__DisplayClass28_0::<UpdateWorkoutName>b__0(WorkoutTemplate)
+extern void U3CU3Ec__DisplayClass28_0_U3CUpdateWorkoutNameU3Eb__0_m480EAB71F568865AE14D07B6F839677260CD92C7 (void);
+// 0x00000018 System.Void DataManager/<>c__DisplayClass29_0::.ctor()
+extern void U3CU3Ec__DisplayClass29_0__ctor_m79788C0F2DD85F41C963046DCE434DBD4B0E83F0 (void);
+// 0x00000019 System.Boolean DataManager/<>c__DisplayClass29_0::<RemoveWorkout>b__0(WorkoutTemplate)
+extern void U3CU3Ec__DisplayClass29_0_U3CRemoveWorkoutU3Eb__0_mBC0C964B5D8FB06A78699461AD71E7E899E07C6A (void);
+// 0x0000001A System.Void DataManager/<>c__DisplayClass30_0::.ctor()
+extern void U3CU3Ec__DisplayClass30_0__ctor_m111D373EEAAFCAF0802157DD99A859A3962F1939 (void);
+// 0x0000001B System.Boolean DataManager/<>c__DisplayClass30_0::<RemoveWorkoutExercise>b__0(WorkoutTemplate)
+extern void U3CU3Ec__DisplayClass30_0_U3CRemoveWorkoutExerciseU3Eb__0_m6847D7EBEEF7EDCCA69ECFD817DD0FD73BB4417E (void);
+// 0x0000001C System.Boolean DataManager/<>c__DisplayClass30_0::<RemoveWorkoutExercise>b__1(System.String)
+extern void U3CU3Ec__DisplayClass30_0_U3CRemoveWorkoutExerciseU3Eb__1_m4184B2CBDF9226334D721C4BCA0CBD9AA85D88AC (void);
+// 0x0000001D System.Void DataManager/<>c__DisplayClass31_0::.ctor()
+extern void U3CU3Ec__DisplayClass31_0__ctor_mF8AC5E0E96EA4B39EBB493809FAFF694C039C304 (void);
+// 0x0000001E System.Boolean DataManager/<>c__DisplayClass31_0::<RemoveMuscleGroupExercise>b__0(System.String)
+extern void U3CU3Ec__DisplayClass31_0_U3CRemoveMuscleGroupExerciseU3Eb__0_mAAD0999D453F1F5F23044E4B817F5C441378EC38 (void);
+// 0x0000001F System.Void DragController::OnPointerDown(UnityEngine.EventSystems.PointerEventData)
+extern void DragController_OnPointerDown_m33C88E7FB9BAADBA7BBD9166CD1CE93B23BC6B10 (void);
+// 0x00000020 System.Void DragController::OnDrag(UnityEngine.EventSystems.PointerEventData)
+extern void DragController_OnDrag_mF4BC8504CBEF73094C63C968371B26361B768ED0 (void);
+// 0x00000021 System.Void DragController::OnPointerUp(UnityEngine.EventSystems.PointerEventData)
+extern void DragController_OnPointerUp_m546DDBE551DC23D38224175529ED21D87A1059B2 (void);
+// 0x00000022 System.Void DragController::.ctor()
+extern void DragController__ctor_m055288DC9E290BB9BC664C7CEAC9E596DAEA3AF9 (void);
+// 0x00000023 System.Void SafeFramer::Awake()
+extern void SafeFramer_Awake_m7EAAD4A47F66B2DB55CF9B07288153FDB625C6DF (void);
+// 0x00000024 System.Void SafeFramer::Update()
+extern void SafeFramer_Update_mDE1E05086F2BB2319B16C7BFCA64A86067B4A48C (void);
+// 0x00000025 System.Void SafeFramer::Refresh()
+extern void SafeFramer_Refresh_mCAD927809EC2FC98F3A0F11B3923C613F902EE2D (void);
+// 0x00000026 UnityEngine.Rect SafeFramer::GetSafeArea()
+extern void SafeFramer_GetSafeArea_mF3A37324D6EEADFC0A8EC123BB036BB3C928CC7E (void);
+// 0x00000027 System.Void SafeFramer::ApplySafeArea(UnityEngine.Rect)
+extern void SafeFramer_ApplySafeArea_m18403E36A34C715F8C56CD4B0C61449901F3387D (void);
+// 0x00000028 System.Void SafeFramer::.ctor()
+extern void SafeFramer__ctor_m386DF5659D0564B3424EA1E5EA618DD05A867D26 (void);
+// 0x00000029 System.Boolean SaveWorkout::CheckFirstTimeData()
+extern void SaveWorkout_CheckFirstTimeData_m81C1CECA62A7FDBD56E5625DC2A5D87E17A95371 (void);
+// 0x0000002A System.Void SaveWorkout::SaveFile()
+extern void SaveWorkout_SaveFile_mBDD69A39700633FB0F30F4C34903E7874C6A0768 (void);
+// 0x0000002B WorkoutSaveData SaveWorkout::LoadFile()
+extern void SaveWorkout_LoadFile_m77B7AE9A01B063EDA8C417FFD75B4AEC571CCE12 (void);
+// 0x0000002C System.Void SaveWorkout::.ctor()
+extern void SaveWorkout__ctor_m6F63867CF5C069106B35B80B40FA19CD64AF1DD9 (void);
+// 0x0000002D System.Void TimedExcercise::CreateTimedExercise()
+extern void TimedExcercise_CreateTimedExercise_m88AECCEFEA86FAFED25E630A590A093B54A16726 (void);
+// 0x0000002E System.Void TimedExcercise::ConfirmTimedExercise()
+extern void TimedExcercise_ConfirmTimedExercise_mFE4C5168C4A4459906ADF4D19DEA95D0DC6E81EE (void);
+// 0x0000002F System.Void TimedExcercise::CancelTimedExercise()
+extern void TimedExcercise_CancelTimedExercise_m3B47C931242951AA24080C7B4F60630F885BD754 (void);
+// 0x00000030 System.Void TimedExcercise::SetTimer(System.Single)
+extern void TimedExcercise_SetTimer_m04354E10EB2D7263CBB9C05F922A88BBD1A5E679 (void);
+// 0x00000031 System.String TimedExcercise::ProcessWorkoutTime(System.Int32)
+extern void TimedExcercise_ProcessWorkoutTime_mCB5E0F5C4D28240178054D956FE490CCF42D6B36 (void);
+// 0x00000032 System.Void TimedExcercise::HandleTimer()
+extern void TimedExcercise_HandleTimer_mE5064C522C08AA8B526C6A0ACA4A253CD24AEF46 (void);
+// 0x00000033 System.Collections.IEnumerator TimedExcercise::Timer()
+extern void TimedExcercise_Timer_mCC6ABC4EFAB9A294C173FBDBFADBD954EB963D14 (void);
+// 0x00000034 System.Void TimedExcercise::.ctor()
+extern void TimedExcercise__ctor_m889BBF3A4D67B235FB0E4BFE8D46EFC3A234B952 (void);
+// 0x00000035 System.Void TimedExcercise/<Timer>d__29::.ctor(System.Int32)
+extern void U3CTimerU3Ed__29__ctor_m3710797ECF6F57E3A398E9A4FEF671ED77EBD91C (void);
+// 0x00000036 System.Void TimedExcercise/<Timer>d__29::System.IDisposable.Dispose()
+extern void U3CTimerU3Ed__29_System_IDisposable_Dispose_m9DA554D47C41A4B2856B9D134A0632FABB05A70F (void);
+// 0x00000037 System.Boolean TimedExcercise/<Timer>d__29::MoveNext()
+extern void U3CTimerU3Ed__29_MoveNext_m94B16D6968CBC4B9BD4D96F2939032F4EB2E6304 (void);
+// 0x00000038 System.Object TimedExcercise/<Timer>d__29::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CTimerU3Ed__29_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m79B7D9F5843AA219505EB3B1CA41FE8BB9E99299 (void);
+// 0x00000039 System.Void TimedExcercise/<Timer>d__29::System.Collections.IEnumerator.Reset()
+extern void U3CTimerU3Ed__29_System_Collections_IEnumerator_Reset_mDEF4F04CF0A26AFDA342BF84276B33BF322A2213 (void);
+// 0x0000003A System.Object TimedExcercise/<Timer>d__29::System.Collections.IEnumerator.get_Current()
+extern void U3CTimerU3Ed__29_System_Collections_IEnumerator_get_Current_mE9A9ABFFCB9F03DAF3F4422425A067A74E01A504 (void);
+// 0x0000003B System.Void UIManager::Start()
+extern void UIManager_Start_m113F392674AB08A26877728CD36F06332E869080 (void);
+// 0x0000003C System.Void UIManager::ShowMainHelp()
+extern void UIManager_ShowMainHelp_m40AE4AC3397C2333CB7FDE35D914AFE3EB38615D (void);
+// 0x0000003D System.Void UIManager::ShowWorkoutHelp()
+extern void UIManager_ShowWorkoutHelp_m10E9E2316076BD58EADDEBD83A35458266910F07 (void);
+// 0x0000003E System.Void UIManager::ShowEditDataHelp()
+extern void UIManager_ShowEditDataHelp_m95F274D0848075A1073D58D9E9F643F7BD2B5B56 (void);
+// 0x0000003F System.Void UIManager::HideHelp()
+extern void UIManager_HideHelp_m075559B92DECFFBF4FC204B4193BF9CA371DB7DB (void);
+// 0x00000040 System.Void UIManager::UpdateWorkoutDropDown()
+extern void UIManager_UpdateWorkoutDropDown_m6D035601AF2388A969E5309CA53D62AA35C76F5D (void);
+// 0x00000041 System.Void UIManager::StartFresh()
+extern void UIManager_StartFresh_m9715F0648398C6746A1CFDFB8653FAD4CA3E1451 (void);
+// 0x00000042 System.Void UIManager::BackToStart()
+extern void UIManager_BackToStart_m145E44DE7932605BDA95398558D1FB950262BB7D (void);
+// 0x00000043 System.Void UIManager::GoToEditScreen()
+extern void UIManager_GoToEditScreen_mCEA527AC1AA9A1A4946C959DD8945A75A43D4C16 (void);
+// 0x00000044 System.Void UIManager::TemplateButtonSelected()
+extern void UIManager_TemplateButtonSelected_m957ECFB59CB941DA12274893546DADCBBA613511 (void);
+// 0x00000045 System.Void UIManager::ExerciseButtonSelected()
+extern void UIManager_ExerciseButtonSelected_mF3C1C8FB021D322CB341FC0AF31BDE7EB9D38CAF (void);
+// 0x00000046 System.Void UIManager::RandomWorkoutScreens()
+extern void UIManager_RandomWorkoutScreens_m38DCE62281DC2E8C2FC0C1A37D313E290EAE9602 (void);
+// 0x00000047 System.Void UIManager::WorkoutComplete()
+extern void UIManager_WorkoutComplete_mC26CC3A6676F26BE142DE304E2C7AB8E24A5030E (void);
+// 0x00000048 System.Void UIManager::ShowMainScreen()
+extern void UIManager_ShowMainScreen_m3323B70493D4B876D5E8FCE49A6C9F6D99102036 (void);
+// 0x00000049 System.Void UIManager::EditDataAddHandler()
+extern void UIManager_EditDataAddHandler_mE3798FDBABD3C2554C878FC3153D6928B0F188C3 (void);
+// 0x0000004A System.Void UIManager::AddTemplateToList(System.String,System.Boolean)
+extern void UIManager_AddTemplateToList_mB0FB2530DF913A6BF27906DE722E27644C9A509D (void);
+// 0x0000004B System.Void UIManager::AddExercisesToList(System.String,System.Boolean,System.Boolean)
+extern void UIManager_AddExercisesToList_mDBC544DD13C9C5E9A291DEBDCF714764490747F0 (void);
+// 0x0000004C System.Void UIManager::HandleExerciseChangeForWorkout(UnityEngine.UI.InputField,System.String)
+extern void UIManager_HandleExerciseChangeForWorkout_m594DF8EB624D85EDFBB39F8D2033E767AC0AA781 (void);
+// 0x0000004D System.Void UIManager::HandleExerciseChangeForMuscleGroup(UnityEngine.UI.InputField,System.String)
+extern void UIManager_HandleExerciseChangeForMuscleGroup_m99C4BD02022DDA59A38F26BF04C4182FA7F1D5B9 (void);
+// 0x0000004E System.Void UIManager::HandleWorkoutNameChange(UnityEngine.UI.InputField)
+extern void UIManager_HandleWorkoutNameChange_mAF1D87B9A827F0B24DB5024237FE26A4FAB5B64B (void);
+// 0x0000004F System.Void UIManager::RemoveExerciseHandler(UnityEngine.GameObject)
+extern void UIManager_RemoveExerciseHandler_m3D22663DD5335286B7E95924B9B750B0879409E5 (void);
+// 0x00000050 System.Void UIManager::RemoveWorkoutHandler(UnityEngine.GameObject)
+extern void UIManager_RemoveWorkoutHandler_m65D2B5EEC313200B045C41F3121FB9F47FCFE90B (void);
+// 0x00000051 System.Void UIManager::RemoveWorkoutExerciseHandler(UnityEngine.GameObject)
+extern void UIManager_RemoveWorkoutExerciseHandler_m16A5F31F23168CFEE74ED8771FB041A36DF1462B (void);
+// 0x00000052 System.Void UIManager::LoadWorkoutTemplate(UnityEngine.GameObject)
+extern void UIManager_LoadWorkoutTemplate_mCF354A21FF09FE62BA45F10033D318532B1D42C2 (void);
+// 0x00000053 System.Void UIManager::SetTemplateIndex(System.Int32)
+extern void UIManager_SetTemplateIndex_m7E42D7344E0F83A23AD90ED5B5A67798D767FD84 (void);
+// 0x00000054 System.Void UIManager::LoadSelectedMuscleGroup(System.Int32)
+extern void UIManager_LoadSelectedMuscleGroup_mCA905EC453B360269736D98B05E38747EC7D35EF (void);
+// 0x00000055 System.Void UIManager::ClearOutCurrentGridList()
+extern void UIManager_ClearOutCurrentGridList_m658667A0A0CD8E9F9BF360C0B9097792436FAEE0 (void);
+// 0x00000056 System.Void UIManager::HandleColorChangeFromUpdate(UnityEngine.UI.Text,System.Boolean)
+extern void UIManager_HandleColorChangeFromUpdate_mAD2BCE77ADB535DD2D6D632E4DB40D289BC8606F (void);
+// 0x00000057 System.Collections.IEnumerator UIManager::HandleColorChange(UnityEngine.UI.Text,System.Boolean)
+extern void UIManager_HandleColorChange_m91DD3EF53755EDAC5A3AA5606FE3DB31C565D4D7 (void);
+// 0x00000058 System.Void UIManager::HandleColorChangeFromSave(UnityEngine.UI.Image)
+extern void UIManager_HandleColorChangeFromSave_m7DE0CCF749C4826F7352F2E3783C72B5C03DF484 (void);
+// 0x00000059 System.Collections.IEnumerator UIManager::HandleColorChange(UnityEngine.UI.Image)
+extern void UIManager_HandleColorChange_mB900D7088A3537996383344776080A7B63DEC192 (void);
+// 0x0000005A System.Void UIManager::.ctor()
+extern void UIManager__ctor_mC9DC2B8984E76F424E73C1860AD4BD3DEBF6573F (void);
+// 0x0000005B System.Boolean UIManager::<LoadWorkoutTemplate>b__48_0(WorkoutTemplate)
+extern void UIManager_U3CLoadWorkoutTemplateU3Eb__48_0_m5E549B7855D46F6A6AADDC6BF3C2F2B3DC233CA5 (void);
+// 0x0000005C System.Void UIManager/<>c__DisplayClass40_0::.ctor()
+extern void U3CU3Ec__DisplayClass40_0__ctor_m661B924DDCCC14B1975275DD8362E976CA1E5B6F (void);
+// 0x0000005D System.Void UIManager/<>c__DisplayClass40_0::<AddTemplateToList>b__0()
+extern void U3CU3Ec__DisplayClass40_0_U3CAddTemplateToListU3Eb__0_mB342909D4005698A59BA0B70C8606C54DAB1EAC0 (void);
+// 0x0000005E System.Void UIManager/<>c__DisplayClass40_0::<AddTemplateToList>b__1()
+extern void U3CU3Ec__DisplayClass40_0_U3CAddTemplateToListU3Eb__1_mCC7628692A84A285FBA774DB8911C4409AB1CA69 (void);
+// 0x0000005F System.Void UIManager/<>c__DisplayClass40_0::<AddTemplateToList>b__2(System.String)
+extern void U3CU3Ec__DisplayClass40_0_U3CAddTemplateToListU3Eb__2_mD713E04124C86065308E79B7612082094C4FBF48 (void);
+// 0x00000060 System.Void UIManager/<>c__DisplayClass41_0::.ctor()
+extern void U3CU3Ec__DisplayClass41_0__ctor_mFB6741AAA902BA35A469394CCE2C81EDDD159428 (void);
+// 0x00000061 System.Void UIManager/<>c__DisplayClass41_0::<AddExercisesToList>b__0(System.String)
+extern void U3CU3Ec__DisplayClass41_0_U3CAddExercisesToListU3Eb__0_mFA6F183A808F5DE163E232B28956859EB4AB486D (void);
+// 0x00000062 System.Void UIManager/<>c__DisplayClass41_0::<AddExercisesToList>b__1()
+extern void U3CU3Ec__DisplayClass41_0_U3CAddExercisesToListU3Eb__1_mF74532B5F811F0F1F6A84F37E92AB8942839B0BA (void);
+// 0x00000063 System.Void UIManager/<>c__DisplayClass41_0::<AddExercisesToList>b__2(System.String)
+extern void U3CU3Ec__DisplayClass41_0_U3CAddExercisesToListU3Eb__2_m460B7BDE60F6E7D7566844FBB9FCA9F355EED013 (void);
+// 0x00000064 System.Void UIManager/<>c__DisplayClass41_0::<AddExercisesToList>b__3()
+extern void U3CU3Ec__DisplayClass41_0_U3CAddExercisesToListU3Eb__3_mD8785815E359D5E02B3CC8C0DB296D12D8BBBEE7 (void);
+// 0x00000065 System.Void UIManager/<>c__DisplayClass41_0::<AddExercisesToList>b__4(System.String)
+extern void U3CU3Ec__DisplayClass41_0_U3CAddExercisesToListU3Eb__4_m1F5FDB0E450B94921FB238FC3C627544ACED98B0 (void);
+// 0x00000066 System.Void UIManager/<>c__DisplayClass41_0::<AddExercisesToList>b__5()
+extern void U3CU3Ec__DisplayClass41_0_U3CAddExercisesToListU3Eb__5_m7CA5046A8C8BBF4A639A3B3533D77AD0C5B354FE (void);
+// 0x00000067 System.Void UIManager/<>c__DisplayClass41_0::<AddExercisesToList>b__6(System.String)
+extern void U3CU3Ec__DisplayClass41_0_U3CAddExercisesToListU3Eb__6_mD4D63423F703A54C399CDBE961A2E2016D71DD3E (void);
+// 0x00000068 System.Void UIManager/<>c__DisplayClass41_0::<AddExercisesToList>b__7()
+extern void U3CU3Ec__DisplayClass41_0_U3CAddExercisesToListU3Eb__7_m3DE3D7356B8EE5350F8A2BC87DAB67AE1A368755 (void);
+// 0x00000069 System.Void UIManager/<>c__DisplayClass50_0::.ctor()
+extern void U3CU3Ec__DisplayClass50_0__ctor_m267517C1C1475C27405313BC433296B90A10FF39 (void);
+// 0x0000006A System.Boolean UIManager/<>c__DisplayClass50_0::<LoadSelectedMuscleGroup>b__0(MuscleGroup)
+extern void U3CU3Ec__DisplayClass50_0_U3CLoadSelectedMuscleGroupU3Eb__0_m67BE9898C9D2361F33ED8A545E91ADADF2C389A5 (void);
+// 0x0000006B System.Void UIManager/<HandleColorChange>d__53::.ctor(System.Int32)
+extern void U3CHandleColorChangeU3Ed__53__ctor_m47E94AE9508F3431C6D291E32A08BFE170D6A167 (void);
+// 0x0000006C System.Void UIManager/<HandleColorChange>d__53::System.IDisposable.Dispose()
+extern void U3CHandleColorChangeU3Ed__53_System_IDisposable_Dispose_m700AE14DBD11487F0A0F2D68B6760FBA2614D087 (void);
+// 0x0000006D System.Boolean UIManager/<HandleColorChange>d__53::MoveNext()
+extern void U3CHandleColorChangeU3Ed__53_MoveNext_mC60E1FDD2E999FE55024F26B39DEB37CD7785EA4 (void);
+// 0x0000006E System.Object UIManager/<HandleColorChange>d__53::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CHandleColorChangeU3Ed__53_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m971F6E553AB4509DE1773BE1DE118AFFF99162AE (void);
+// 0x0000006F System.Void UIManager/<HandleColorChange>d__53::System.Collections.IEnumerator.Reset()
+extern void U3CHandleColorChangeU3Ed__53_System_Collections_IEnumerator_Reset_mDD1EABA5D2A1014177231ECF8300FA069E76302E (void);
+// 0x00000070 System.Object UIManager/<HandleColorChange>d__53::System.Collections.IEnumerator.get_Current()
+extern void U3CHandleColorChangeU3Ed__53_System_Collections_IEnumerator_get_Current_m6F62D8C27A243798F964AA651CD89A79059E7A2D (void);
+// 0x00000071 System.Void UIManager/<HandleColorChange>d__55::.ctor(System.Int32)
+extern void U3CHandleColorChangeU3Ed__55__ctor_mF3F537E5FF65BD8841F245BDF19CDF55E173B9CD (void);
+// 0x00000072 System.Void UIManager/<HandleColorChange>d__55::System.IDisposable.Dispose()
+extern void U3CHandleColorChangeU3Ed__55_System_IDisposable_Dispose_mA222580D57AAF424EB7A393496146E344FE4A1D1 (void);
+// 0x00000073 System.Boolean UIManager/<HandleColorChange>d__55::MoveNext()
+extern void U3CHandleColorChangeU3Ed__55_MoveNext_m3449DE048F844BDBDE3AE9864777DEF5F9C817B0 (void);
+// 0x00000074 System.Object UIManager/<HandleColorChange>d__55::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CHandleColorChangeU3Ed__55_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mE3646AE727D2505726ED25EBEAFCAB2DAB7D1DED (void);
+// 0x00000075 System.Void UIManager/<HandleColorChange>d__55::System.Collections.IEnumerator.Reset()
+extern void U3CHandleColorChangeU3Ed__55_System_Collections_IEnumerator_Reset_mC28A48E7FB24D1F6A3EA77E2124717D3653C1144 (void);
+// 0x00000076 System.Object UIManager/<HandleColorChange>d__55::System.Collections.IEnumerator.get_Current()
+extern void U3CHandleColorChangeU3Ed__55_System_Collections_IEnumerator_get_Current_m768A2F7372CB299A37131437620F57764411FE42 (void);
+// 0x00000077 System.String Utils::HandleCapitalCase(System.String)
+extern void Utils_HandleCapitalCase_mDE6C53E1400AFFFE063E05CDAD75CC44585FD408 (void);
+// 0x00000078 System.String Utils::UppercaseFirst(System.String)
+extern void Utils_UppercaseFirst_m24D615C838F4AAE15541E3C2DCC384941C76BE1E (void);
+// 0x00000079 System.String[] Utils::GetActiveWorkout(System.Int32)
+extern void Utils_GetActiveWorkout_m6B67718F9B18647C836994BCB1CBCB89E8D2A984 (void);
+// 0x0000007A System.String Utils::GetActiveWorkoutName(System.Int32)
+extern void Utils_GetActiveWorkoutName_mD8994EE90CC6AE3D2A43A859EA0EE0017E074BB3 (void);
+// 0x0000007B System.String[] Utils::GetActiveMuscleGroupExercises(System.Int32)
+extern void Utils_GetActiveMuscleGroupExercises_m2A8ADAC99F325FFB3F1C9093BF675AAC707FF825 (void);
+// 0x0000007C System.String Utils::GetActiveMuscleGroupName(System.Int32)
+extern void Utils_GetActiveMuscleGroupName_m28B8C9CB6928903B25E398B81A843F29C971AE70 (void);
+// 0x0000007D System.Void Utils::.ctor()
+extern void Utils__ctor_m419277C5F83D8F73636DE513598E4A5EF9C85A11 (void);
+// 0x0000007E System.Void MuscleGroup::.ctor()
+extern void MuscleGroup__ctor_m75607CCDB5E6B235B56E3FEEA1A878C7C55F6B4B (void);
+// 0x0000007F System.Void MuscleGroup::.ctor(System.String,System.String[])
+extern void MuscleGroup__ctor_m03B6DF9F7FAA8BA39417EDD3001E9FBFDAD5BB62 (void);
+// 0x00000080 System.Void MuscleGroup::.ctor(System.String)
+extern void MuscleGroup__ctor_mEF9DAB2FA4DE90AACE029FD04493DCA17FDA64A8 (void);
+// 0x00000081 System.Void WorkoutTemplate::.ctor()
+extern void WorkoutTemplate__ctor_m4AA308ED4D3A4FDCABAE35A8D66562C25AED059F (void);
+// 0x00000082 System.Void WorkoutTemplate::.ctor(System.String,System.String[])
+extern void WorkoutTemplate__ctor_m9F62E3EF13A86BC314935259710AA0F894F36ABE (void);
+// 0x00000083 System.Void WorkoutTemplate::.ctor(System.String)
+extern void WorkoutTemplate__ctor_m0E79D9C0FE0F322A6E49F32AB3B4A28434AC59BF (void);
+// 0x00000084 System.Void WorkoutSaveData::.ctor(WorkoutTemplate[],MuscleGroup[])
+extern void WorkoutSaveData__ctor_mB67563667BC98147B435E366D83B298F3CA76B40 (void);
+// 0x00000085 System.Void WorkoutManager::Start()
+extern void WorkoutManager_Start_m7CC2FFE37860140FD7CE7E8865DCDD78F7B5456C (void);
+// 0x00000086 System.Void WorkoutManager::StartFresh()
+extern void WorkoutManager_StartFresh_m6F2B2E389FE5D90C7DC5766FEDF84C27A1B716BE (void);
+// 0x00000087 System.Void WorkoutManager::GoBackToStart()
+extern void WorkoutManager_GoBackToStart_m32A2069AFE3B261B2AEDEB0AD27193F0080C2358 (void);
+// 0x00000088 System.Void WorkoutManager::GoToEditScreen()
+extern void WorkoutManager_GoToEditScreen_m0F12110CAEC4B55305034B47BA853B5EE69266E4 (void);
+// 0x00000089 System.Void WorkoutManager::RandomWorkout()
+extern void WorkoutManager_RandomWorkout_m8310953154BF4CE57A2861865A24F87F96B19DFC (void);
+// 0x0000008A System.Void WorkoutManager::RandomizeWorkout()
+extern void WorkoutManager_RandomizeWorkout_mB0974BBFBA88F29C592AC860ECA7DE37C93C0E2B (void);
+// 0x0000008B System.String WorkoutManager::GetRandomWorkout(System.Int32)
+extern void WorkoutManager_GetRandomWorkout_m7FC7242908C9EC029FAE367C2396BD1CC532C817 (void);
+// 0x0000008C System.Void WorkoutManager::LoadSelectedTemplate()
+extern void WorkoutManager_LoadSelectedTemplate_m15E20A3594513446789AB2E4E782EF603E28C438 (void);
+// 0x0000008D System.Void WorkoutManager::ClearExerciseList()
+extern void WorkoutManager_ClearExerciseList_m486435E81B17652ED05F085CC3CC2A4DD34CA869 (void);
+// 0x0000008E System.Void WorkoutManager::ShowWorkoutInput()
+extern void WorkoutManager_ShowWorkoutInput_m6D0928E567745C71A61FD7F10E0B3982E83FB517 (void);
+// 0x0000008F System.Void WorkoutManager::AddRound()
+extern void WorkoutManager_AddRound_m672699AFC023A8A8E43D3C93C393E3DCB8C0EAA3 (void);
+// 0x00000090 System.Void WorkoutManager::AddNewWorkout(System.String)
+extern void WorkoutManager_AddNewWorkout_mB385D93470E599E0364FBA9B99A911EBA720FF86 (void);
+// 0x00000091 System.Void WorkoutManager::HandleRemoveWorkout(UnityEngine.GameObject)
+extern void WorkoutManager_HandleRemoveWorkout_mB003B96801359EC635BCB5DD968953C61A686A3C (void);
+// 0x00000092 System.Void WorkoutManager::HandleTextChange(UnityEngine.UI.InputField)
+extern void WorkoutManager_HandleTextChange_mCD67FB7F2CAFC6516B5DFBDE799B0895D638652B (void);
+// 0x00000093 System.Void WorkoutManager::CreateTimedExercise()
+extern void WorkoutManager_CreateTimedExercise_m00A65B5986FB84FDCFB9FD882F46230C7BA62F19 (void);
+// 0x00000094 System.Void WorkoutManager::DoneWithSetup()
+extern void WorkoutManager_DoneWithSetup_mCCDA2F9F4A1B5902F5246610BB6A84A5197733D1 (void);
+// 0x00000095 System.Void WorkoutManager::StartTimer()
+extern void WorkoutManager_StartTimer_mEA3CBD21F940F558F6FAFD98A91EF2FD3DD4BB67 (void);
+// 0x00000096 System.Collections.IEnumerator WorkoutManager::Timer()
+extern void WorkoutManager_Timer_m5D9FDA5ADDFC705DA2C53B98D4F0A2F3DF3C0392 (void);
+// 0x00000097 System.String WorkoutManager::ProcessWorkoutTime(System.Int32)
+extern void WorkoutManager_ProcessWorkoutTime_m87C0F7B0AF93B8F5C3F161210F99811B5EDEA741 (void);
+// 0x00000098 System.Void WorkoutManager::.ctor()
+extern void WorkoutManager__ctor_mAF92232D29207073E1F842AE5D0FA67BE766E5AF (void);
+// 0x00000099 System.Void WorkoutManager/<>c__DisplayClass37_0::.ctor()
+extern void U3CU3Ec__DisplayClass37_0__ctor_mF9E667B40FCFA1E8489BF836BB856AE6B52DCE0D (void);
+// 0x0000009A System.Void WorkoutManager/<>c__DisplayClass37_0::<AddNewWorkout>b__0(System.String)
+extern void U3CU3Ec__DisplayClass37_0_U3CAddNewWorkoutU3Eb__0_mFA10A1D3677162BEBABC4749DDD89398914E3BBA (void);
+// 0x0000009B System.Void WorkoutManager/<>c__DisplayClass37_0::<AddNewWorkout>b__1()
+extern void U3CU3Ec__DisplayClass37_0_U3CAddNewWorkoutU3Eb__1_m0408E5F4D91781D9EEFC31EAAB011FD7065BA243 (void);
+// 0x0000009C System.Void WorkoutManager/<Timer>d__43::.ctor(System.Int32)
+extern void U3CTimerU3Ed__43__ctor_m1A5556A6C8BA8FEA3A26B4C587EE27B7E27EAEAB (void);
+// 0x0000009D System.Void WorkoutManager/<Timer>d__43::System.IDisposable.Dispose()
+extern void U3CTimerU3Ed__43_System_IDisposable_Dispose_mB7E30BD2CFC14B1EFED53B5C53FD06D519044475 (void);
+// 0x0000009E System.Boolean WorkoutManager/<Timer>d__43::MoveNext()
+extern void U3CTimerU3Ed__43_MoveNext_mAE093FC4C1984AF69FB4FD11E4B80850681E4D69 (void);
+// 0x0000009F System.Object WorkoutManager/<Timer>d__43::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CTimerU3Ed__43_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mEC999BCCB83695851249E77E1CAFB07064595835 (void);
+// 0x000000A0 System.Void WorkoutManager/<Timer>d__43::System.Collections.IEnumerator.Reset()
+extern void U3CTimerU3Ed__43_System_Collections_IEnumerator_Reset_m88F6A026E4E919E7DAD1768A7868399D642F8012 (void);
+// 0x000000A1 System.Object WorkoutManager/<Timer>d__43::System.Collections.IEnumerator.get_Current()
+extern void U3CTimerU3Ed__43_System_Collections_IEnumerator_get_Current_m90C56B9B02C1D15FEDADA6A4C2F7A7D32F596DED (void);
+static Il2CppMethodPointer s_methodPointers[161] = 
+{
+	DataManager_Start_m29149084C328BA04088BB5398109A6107C41F1D4,
+	DataManager_SaveData_m3245682B43A6CC45F56F9FB089BCEBC7AA0279A8,
+	DataManager_LoadSavedData_mBF42B3AB386334901276A55C6A9DF3617F1366A9,
+	DataManager_LoadDefaultData_mCDFF176708491B0340E5E0D585C5E0F32B1A9BFE,
+	DataManager_AddNewWorkoutTemplate_m649513CF8304D6D4477EFCC72EDA8D31FF6765BD,
+	DataManager_AddNewExerciseForSpecificWorkout_mF7B6B84832EFDA5C9C552DF8B1EC9F27A1DE0FAA,
+	DataManager_AddNewExerciseForSpecificMuscleGroup_mB3D9112614EB3AC4D8E61CD777111CFD9BAF2424,
+	DataManager_UpdateExerciseDataForSpecificWorkout_m8891997C95C8E278702AD19CB7153613C7C7632E,
+	DataManager_UpdateExerciseDataToMuscleGroup_m2A1400A5D3111E3758547C9B9496CA69A938D2B9,
+	DataManager_UpdateWorkoutName_mA685978A9A6F64F82FB5FE89C53237B3369E6D1F,
+	DataManager_RemoveWorkout_m1A8EC0B1D9FF86FF5A0D776F927A64E13C2C09AF,
+	DataManager_RemoveWorkoutExercise_m17FD23A725BB57E91DBEFF0E0F3E6D964F30ABEE,
+	DataManager_RemoveMuscleGroupExercise_mF90D9E0FCEF912EDBE7F71AEF9B325DC78E74CE6,
+	DataManager__ctor_mD735B7F80F3DE13E2BB45118CDA7FA619330DCDA,
+	U3CU3Ec__DisplayClass24_0__ctor_m895A7A6C9A66F6D3C7694101D12DC3A36492272F,
+	U3CU3Ec__DisplayClass24_0_U3CAddNewExerciseForSpecificWorkoutU3Eb__0_mB8B98C03005841B5C04B1644C0BA4B67ED5BB428,
+	U3CU3Ec__DisplayClass26_0__ctor_m3B638B98C0B3800AC4E329C9D85EE7549962DC46,
+	U3CU3Ec__DisplayClass26_0_U3CUpdateExerciseDataForSpecificWorkoutU3Eb__0_mDF294F2AF53EE3A19E27EAFC4D6169A7B1156275,
+	U3CU3Ec__DisplayClass26_0_U3CUpdateExerciseDataForSpecificWorkoutU3Eb__1_m9A040742C076397D50DFEDE12DFBAC8B515F749C,
+	U3CU3Ec__DisplayClass27_0__ctor_mB0F8C2A601589FE2356CDE303DFD604FC5A33A06,
+	U3CU3Ec__DisplayClass27_0_U3CUpdateExerciseDataToMuscleGroupU3Eb__0_m4F6FEF02DDD8EF209C18376A022F23E8C6A05A9C,
+	U3CU3Ec__DisplayClass28_0__ctor_m918C269C46E218AD3715A0F6837B14DD2D325424,
+	U3CU3Ec__DisplayClass28_0_U3CUpdateWorkoutNameU3Eb__0_m480EAB71F568865AE14D07B6F839677260CD92C7,
+	U3CU3Ec__DisplayClass29_0__ctor_m79788C0F2DD85F41C963046DCE434DBD4B0E83F0,
+	U3CU3Ec__DisplayClass29_0_U3CRemoveWorkoutU3Eb__0_mBC0C964B5D8FB06A78699461AD71E7E899E07C6A,
+	U3CU3Ec__DisplayClass30_0__ctor_m111D373EEAAFCAF0802157DD99A859A3962F1939,
+	U3CU3Ec__DisplayClass30_0_U3CRemoveWorkoutExerciseU3Eb__0_m6847D7EBEEF7EDCCA69ECFD817DD0FD73BB4417E,
+	U3CU3Ec__DisplayClass30_0_U3CRemoveWorkoutExerciseU3Eb__1_m4184B2CBDF9226334D721C4BCA0CBD9AA85D88AC,
+	U3CU3Ec__DisplayClass31_0__ctor_mF8AC5E0E96EA4B39EBB493809FAFF694C039C304,
+	U3CU3Ec__DisplayClass31_0_U3CRemoveMuscleGroupExerciseU3Eb__0_mAAD0999D453F1F5F23044E4B817F5C441378EC38,
+	DragController_OnPointerDown_m33C88E7FB9BAADBA7BBD9166CD1CE93B23BC6B10,
+	DragController_OnDrag_mF4BC8504CBEF73094C63C968371B26361B768ED0,
+	DragController_OnPointerUp_m546DDBE551DC23D38224175529ED21D87A1059B2,
+	DragController__ctor_m055288DC9E290BB9BC664C7CEAC9E596DAEA3AF9,
+	SafeFramer_Awake_m7EAAD4A47F66B2DB55CF9B07288153FDB625C6DF,
+	SafeFramer_Update_mDE1E05086F2BB2319B16C7BFCA64A86067B4A48C,
+	SafeFramer_Refresh_mCAD927809EC2FC98F3A0F11B3923C613F902EE2D,
+	SafeFramer_GetSafeArea_mF3A37324D6EEADFC0A8EC123BB036BB3C928CC7E,
+	SafeFramer_ApplySafeArea_m18403E36A34C715F8C56CD4B0C61449901F3387D,
+	SafeFramer__ctor_m386DF5659D0564B3424EA1E5EA618DD05A867D26,
+	SaveWorkout_CheckFirstTimeData_m81C1CECA62A7FDBD56E5625DC2A5D87E17A95371,
+	SaveWorkout_SaveFile_mBDD69A39700633FB0F30F4C34903E7874C6A0768,
+	SaveWorkout_LoadFile_m77B7AE9A01B063EDA8C417FFD75B4AEC571CCE12,
+	SaveWorkout__ctor_m6F63867CF5C069106B35B80B40FA19CD64AF1DD9,
+	TimedExcercise_CreateTimedExercise_m88AECCEFEA86FAFED25E630A590A093B54A16726,
+	TimedExcercise_ConfirmTimedExercise_mFE4C5168C4A4459906ADF4D19DEA95D0DC6E81EE,
+	TimedExcercise_CancelTimedExercise_m3B47C931242951AA24080C7B4F60630F885BD754,
+	TimedExcercise_SetTimer_m04354E10EB2D7263CBB9C05F922A88BBD1A5E679,
+	TimedExcercise_ProcessWorkoutTime_mCB5E0F5C4D28240178054D956FE490CCF42D6B36,
+	TimedExcercise_HandleTimer_mE5064C522C08AA8B526C6A0ACA4A253CD24AEF46,
+	TimedExcercise_Timer_mCC6ABC4EFAB9A294C173FBDBFADBD954EB963D14,
+	TimedExcercise__ctor_m889BBF3A4D67B235FB0E4BFE8D46EFC3A234B952,
+	U3CTimerU3Ed__29__ctor_m3710797ECF6F57E3A398E9A4FEF671ED77EBD91C,
+	U3CTimerU3Ed__29_System_IDisposable_Dispose_m9DA554D47C41A4B2856B9D134A0632FABB05A70F,
+	U3CTimerU3Ed__29_MoveNext_m94B16D6968CBC4B9BD4D96F2939032F4EB2E6304,
+	U3CTimerU3Ed__29_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m79B7D9F5843AA219505EB3B1CA41FE8BB9E99299,
+	U3CTimerU3Ed__29_System_Collections_IEnumerator_Reset_mDEF4F04CF0A26AFDA342BF84276B33BF322A2213,
+	U3CTimerU3Ed__29_System_Collections_IEnumerator_get_Current_mE9A9ABFFCB9F03DAF3F4422425A067A74E01A504,
+	UIManager_Start_m113F392674AB08A26877728CD36F06332E869080,
+	UIManager_ShowMainHelp_m40AE4AC3397C2333CB7FDE35D914AFE3EB38615D,
+	UIManager_ShowWorkoutHelp_m10E9E2316076BD58EADDEBD83A35458266910F07,
+	UIManager_ShowEditDataHelp_m95F274D0848075A1073D58D9E9F643F7BD2B5B56,
+	UIManager_HideHelp_m075559B92DECFFBF4FC204B4193BF9CA371DB7DB,
+	UIManager_UpdateWorkoutDropDown_m6D035601AF2388A969E5309CA53D62AA35C76F5D,
+	UIManager_StartFresh_m9715F0648398C6746A1CFDFB8653FAD4CA3E1451,
+	UIManager_BackToStart_m145E44DE7932605BDA95398558D1FB950262BB7D,
+	UIManager_GoToEditScreen_mCEA527AC1AA9A1A4946C959DD8945A75A43D4C16,
+	UIManager_TemplateButtonSelected_m957ECFB59CB941DA12274893546DADCBBA613511,
+	UIManager_ExerciseButtonSelected_mF3C1C8FB021D322CB341FC0AF31BDE7EB9D38CAF,
+	UIManager_RandomWorkoutScreens_m38DCE62281DC2E8C2FC0C1A37D313E290EAE9602,
+	UIManager_WorkoutComplete_mC26CC3A6676F26BE142DE304E2C7AB8E24A5030E,
+	UIManager_ShowMainScreen_m3323B70493D4B876D5E8FCE49A6C9F6D99102036,
+	UIManager_EditDataAddHandler_mE3798FDBABD3C2554C878FC3153D6928B0F188C3,
+	UIManager_AddTemplateToList_mB0FB2530DF913A6BF27906DE722E27644C9A509D,
+	UIManager_AddExercisesToList_mDBC544DD13C9C5E9A291DEBDCF714764490747F0,
+	UIManager_HandleExerciseChangeForWorkout_m594DF8EB624D85EDFBB39F8D2033E767AC0AA781,
+	UIManager_HandleExerciseChangeForMuscleGroup_m99C4BD02022DDA59A38F26BF04C4182FA7F1D5B9,
+	UIManager_HandleWorkoutNameChange_mAF1D87B9A827F0B24DB5024237FE26A4FAB5B64B,
+	UIManager_RemoveExerciseHandler_m3D22663DD5335286B7E95924B9B750B0879409E5,
+	UIManager_RemoveWorkoutHandler_m65D2B5EEC313200B045C41F3121FB9F47FCFE90B,
+	UIManager_RemoveWorkoutExerciseHandler_m16A5F31F23168CFEE74ED8771FB041A36DF1462B,
+	UIManager_LoadWorkoutTemplate_mCF354A21FF09FE62BA45F10033D318532B1D42C2,
+	UIManager_SetTemplateIndex_m7E42D7344E0F83A23AD90ED5B5A67798D767FD84,
+	UIManager_LoadSelectedMuscleGroup_mCA905EC453B360269736D98B05E38747EC7D35EF,
+	UIManager_ClearOutCurrentGridList_m658667A0A0CD8E9F9BF360C0B9097792436FAEE0,
+	UIManager_HandleColorChangeFromUpdate_mAD2BCE77ADB535DD2D6D632E4DB40D289BC8606F,
+	UIManager_HandleColorChange_m91DD3EF53755EDAC5A3AA5606FE3DB31C565D4D7,
+	UIManager_HandleColorChangeFromSave_m7DE0CCF749C4826F7352F2E3783C72B5C03DF484,
+	UIManager_HandleColorChange_mB900D7088A3537996383344776080A7B63DEC192,
+	UIManager__ctor_mC9DC2B8984E76F424E73C1860AD4BD3DEBF6573F,
+	UIManager_U3CLoadWorkoutTemplateU3Eb__48_0_m5E549B7855D46F6A6AADDC6BF3C2F2B3DC233CA5,
+	U3CU3Ec__DisplayClass40_0__ctor_m661B924DDCCC14B1975275DD8362E976CA1E5B6F,
+	U3CU3Ec__DisplayClass40_0_U3CAddTemplateToListU3Eb__0_mB342909D4005698A59BA0B70C8606C54DAB1EAC0,
+	U3CU3Ec__DisplayClass40_0_U3CAddTemplateToListU3Eb__1_mCC7628692A84A285FBA774DB8911C4409AB1CA69,
+	U3CU3Ec__DisplayClass40_0_U3CAddTemplateToListU3Eb__2_mD713E04124C86065308E79B7612082094C4FBF48,
+	U3CU3Ec__DisplayClass41_0__ctor_mFB6741AAA902BA35A469394CCE2C81EDDD159428,
+	U3CU3Ec__DisplayClass41_0_U3CAddExercisesToListU3Eb__0_mFA6F183A808F5DE163E232B28956859EB4AB486D,
+	U3CU3Ec__DisplayClass41_0_U3CAddExercisesToListU3Eb__1_mF74532B5F811F0F1F6A84F37E92AB8942839B0BA,
+	U3CU3Ec__DisplayClass41_0_U3CAddExercisesToListU3Eb__2_m460B7BDE60F6E7D7566844FBB9FCA9F355EED013,
+	U3CU3Ec__DisplayClass41_0_U3CAddExercisesToListU3Eb__3_mD8785815E359D5E02B3CC8C0DB296D12D8BBBEE7,
+	U3CU3Ec__DisplayClass41_0_U3CAddExercisesToListU3Eb__4_m1F5FDB0E450B94921FB238FC3C627544ACED98B0,
+	U3CU3Ec__DisplayClass41_0_U3CAddExercisesToListU3Eb__5_m7CA5046A8C8BBF4A639A3B3533D77AD0C5B354FE,
+	U3CU3Ec__DisplayClass41_0_U3CAddExercisesToListU3Eb__6_mD4D63423F703A54C399CDBE961A2E2016D71DD3E,
+	U3CU3Ec__DisplayClass41_0_U3CAddExercisesToListU3Eb__7_m3DE3D7356B8EE5350F8A2BC87DAB67AE1A368755,
+	U3CU3Ec__DisplayClass50_0__ctor_m267517C1C1475C27405313BC433296B90A10FF39,
+	U3CU3Ec__DisplayClass50_0_U3CLoadSelectedMuscleGroupU3Eb__0_m67BE9898C9D2361F33ED8A545E91ADADF2C389A5,
+	U3CHandleColorChangeU3Ed__53__ctor_m47E94AE9508F3431C6D291E32A08BFE170D6A167,
+	U3CHandleColorChangeU3Ed__53_System_IDisposable_Dispose_m700AE14DBD11487F0A0F2D68B6760FBA2614D087,
+	U3CHandleColorChangeU3Ed__53_MoveNext_mC60E1FDD2E999FE55024F26B39DEB37CD7785EA4,
+	U3CHandleColorChangeU3Ed__53_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m971F6E553AB4509DE1773BE1DE118AFFF99162AE,
+	U3CHandleColorChangeU3Ed__53_System_Collections_IEnumerator_Reset_mDD1EABA5D2A1014177231ECF8300FA069E76302E,
+	U3CHandleColorChangeU3Ed__53_System_Collections_IEnumerator_get_Current_m6F62D8C27A243798F964AA651CD89A79059E7A2D,
+	U3CHandleColorChangeU3Ed__55__ctor_mF3F537E5FF65BD8841F245BDF19CDF55E173B9CD,
+	U3CHandleColorChangeU3Ed__55_System_IDisposable_Dispose_mA222580D57AAF424EB7A393496146E344FE4A1D1,
+	U3CHandleColorChangeU3Ed__55_MoveNext_m3449DE048F844BDBDE3AE9864777DEF5F9C817B0,
+	U3CHandleColorChangeU3Ed__55_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mE3646AE727D2505726ED25EBEAFCAB2DAB7D1DED,
+	U3CHandleColorChangeU3Ed__55_System_Collections_IEnumerator_Reset_mC28A48E7FB24D1F6A3EA77E2124717D3653C1144,
+	U3CHandleColorChangeU3Ed__55_System_Collections_IEnumerator_get_Current_m768A2F7372CB299A37131437620F57764411FE42,
+	Utils_HandleCapitalCase_mDE6C53E1400AFFFE063E05CDAD75CC44585FD408,
+	Utils_UppercaseFirst_m24D615C838F4AAE15541E3C2DCC384941C76BE1E,
+	Utils_GetActiveWorkout_m6B67718F9B18647C836994BCB1CBCB89E8D2A984,
+	Utils_GetActiveWorkoutName_mD8994EE90CC6AE3D2A43A859EA0EE0017E074BB3,
+	Utils_GetActiveMuscleGroupExercises_m2A8ADAC99F325FFB3F1C9093BF675AAC707FF825,
+	Utils_GetActiveMuscleGroupName_m28B8C9CB6928903B25E398B81A843F29C971AE70,
+	Utils__ctor_m419277C5F83D8F73636DE513598E4A5EF9C85A11,
+	MuscleGroup__ctor_m75607CCDB5E6B235B56E3FEEA1A878C7C55F6B4B,
+	MuscleGroup__ctor_m03B6DF9F7FAA8BA39417EDD3001E9FBFDAD5BB62,
+	MuscleGroup__ctor_mEF9DAB2FA4DE90AACE029FD04493DCA17FDA64A8,
+	WorkoutTemplate__ctor_m4AA308ED4D3A4FDCABAE35A8D66562C25AED059F,
+	WorkoutTemplate__ctor_m9F62E3EF13A86BC314935259710AA0F894F36ABE,
+	WorkoutTemplate__ctor_m0E79D9C0FE0F322A6E49F32AB3B4A28434AC59BF,
+	WorkoutSaveData__ctor_mB67563667BC98147B435E366D83B298F3CA76B40,
+	WorkoutManager_Start_m7CC2FFE37860140FD7CE7E8865DCDD78F7B5456C,
+	WorkoutManager_StartFresh_m6F2B2E389FE5D90C7DC5766FEDF84C27A1B716BE,
+	WorkoutManager_GoBackToStart_m32A2069AFE3B261B2AEDEB0AD27193F0080C2358,
+	WorkoutManager_GoToEditScreen_m0F12110CAEC4B55305034B47BA853B5EE69266E4,
+	WorkoutManager_RandomWorkout_m8310953154BF4CE57A2861865A24F87F96B19DFC,
+	WorkoutManager_RandomizeWorkout_mB0974BBFBA88F29C592AC860ECA7DE37C93C0E2B,
+	WorkoutManager_GetRandomWorkout_m7FC7242908C9EC029FAE367C2396BD1CC532C817,
+	WorkoutManager_LoadSelectedTemplate_m15E20A3594513446789AB2E4E782EF603E28C438,
+	WorkoutManager_ClearExerciseList_m486435E81B17652ED05F085CC3CC2A4DD34CA869,
+	WorkoutManager_ShowWorkoutInput_m6D0928E567745C71A61FD7F10E0B3982E83FB517,
+	WorkoutManager_AddRound_m672699AFC023A8A8E43D3C93C393E3DCB8C0EAA3,
+	WorkoutManager_AddNewWorkout_mB385D93470E599E0364FBA9B99A911EBA720FF86,
+	WorkoutManager_HandleRemoveWorkout_mB003B96801359EC635BCB5DD968953C61A686A3C,
+	WorkoutManager_HandleTextChange_mCD67FB7F2CAFC6516B5DFBDE799B0895D638652B,
+	WorkoutManager_CreateTimedExercise_m00A65B5986FB84FDCFB9FD882F46230C7BA62F19,
+	WorkoutManager_DoneWithSetup_mCCDA2F9F4A1B5902F5246610BB6A84A5197733D1,
+	WorkoutManager_StartTimer_mEA3CBD21F940F558F6FAFD98A91EF2FD3DD4BB67,
+	WorkoutManager_Timer_m5D9FDA5ADDFC705DA2C53B98D4F0A2F3DF3C0392,
+	WorkoutManager_ProcessWorkoutTime_m87C0F7B0AF93B8F5C3F161210F99811B5EDEA741,
+	WorkoutManager__ctor_mAF92232D29207073E1F842AE5D0FA67BE766E5AF,
+	U3CU3Ec__DisplayClass37_0__ctor_mF9E667B40FCFA1E8489BF836BB856AE6B52DCE0D,
+	U3CU3Ec__DisplayClass37_0_U3CAddNewWorkoutU3Eb__0_mFA10A1D3677162BEBABC4749DDD89398914E3BBA,
+	U3CU3Ec__DisplayClass37_0_U3CAddNewWorkoutU3Eb__1_m0408E5F4D91781D9EEFC31EAAB011FD7065BA243,
+	U3CTimerU3Ed__43__ctor_m1A5556A6C8BA8FEA3A26B4C587EE27B7E27EAEAB,
+	U3CTimerU3Ed__43_System_IDisposable_Dispose_mB7E30BD2CFC14B1EFED53B5C53FD06D519044475,
+	U3CTimerU3Ed__43_MoveNext_mAE093FC4C1984AF69FB4FD11E4B80850681E4D69,
+	U3CTimerU3Ed__43_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mEC999BCCB83695851249E77E1CAFB07064595835,
+	U3CTimerU3Ed__43_System_Collections_IEnumerator_Reset_m88F6A026E4E919E7DAD1768A7868399D642F8012,
+	U3CTimerU3Ed__43_System_Collections_IEnumerator_get_Current_m90C56B9B02C1D15FEDADA6A4C2F7A7D32F596DED,
+};
+static const int32_t s_InvokerIndices[161] = 
+{
+	3218,
+	3218,
+	3218,
+	3218,
+	2624,
+	1475,
+	1359,
+	559,
+	558,
+	806,
+	2624,
+	1475,
+	1359,
+	3218,
+	3218,
+	1869,
+	3218,
+	1869,
+	1869,
+	3218,
+	1869,
+	3218,
+	1869,
+	3218,
+	1869,
+	3218,
+	1869,
+	1869,
+	3218,
+	1869,
+	2624,
+	2624,
+	2624,
+	3218,
+	3218,
+	3218,
+	3218,
+	3152,
+	2641,
+	3218,
+	4887,
+	4930,
+	4907,
+	3218,
+	3218,
+	3218,
+	3218,
+	2656,
+	2317,
+	3218,
+	3134,
+	3218,
+	2607,
+	3218,
+	3073,
+	3134,
+	3218,
+	3134,
+	3218,
+	3218,
+	3218,
+	3218,
+	3218,
+	3218,
+	3218,
+	3218,
+	3218,
+	3218,
+	3218,
+	3218,
+	3218,
+	3218,
+	3218,
+	1464,
+	778,
+	1475,
+	1475,
+	2624,
+	2624,
+	2624,
+	2624,
+	2624,
+	2607,
+	2607,
+	3218,
+	1464,
+	1147,
+	2624,
+	2319,
+	3218,
+	1869,
+	3218,
+	3218,
+	3218,
+	2624,
+	3218,
+	2624,
+	3218,
+	2624,
+	3218,
+	2624,
+	3218,
+	2624,
+	3218,
+	3218,
+	1869,
+	2607,
+	3218,
+	3073,
+	3134,
+	3218,
+	3134,
+	2607,
+	3218,
+	3073,
+	3134,
+	3218,
+	3134,
+	4694,
+	4694,
+	4691,
+	4691,
+	4691,
+	4691,
+	3218,
+	3218,
+	1475,
+	2624,
+	3218,
+	1475,
+	2624,
+	1475,
+	3218,
+	3218,
+	3218,
+	3218,
+	3218,
+	3218,
+	2317,
+	3218,
+	3218,
+	3218,
+	3218,
+	2624,
+	2624,
+	2624,
+	3218,
+	3218,
+	3218,
+	3134,
+	2317,
+	3218,
+	3218,
+	2624,
+	3218,
+	2607,
+	3218,
+	3073,
+	3134,
+	3218,
+	3134,
+};
+IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
+const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
+{
+	"Assembly-CSharp.dll",
+	161,
+	s_methodPointers,
+	0,
+	NULL,
+	s_InvokerIndices,
+	0,
+	NULL,
+	0,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL, // module initializer,
+	NULL,
+	NULL,
+	NULL,
+};
